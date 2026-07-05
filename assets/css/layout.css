@@ -1,0 +1,73 @@
+/**
+ * Re-skins Blocksy's own header/footer builder output (.ct-header /
+ * .ct-footer) to match the SiteNav / SiteFooter design mockups. The builder
+ * itself is not overridden -- only restyled -- so Blocksy's existing
+ * responsive nav JS keeps working unmodified.
+ */
+
+.ct-header {
+	background: var(--yhdr-white);
+	border-bottom: 1px solid var(--yhdr-border);
+}
+
+.ct-header a {
+	font-family: var(--yhdr-font-heading);
+	font-weight: 600;
+}
+
+.ct-header .item-link {
+	color: var(--yhdr-near-black);
+}
+
+.ct-header .item-link:hover,
+.ct-header .current-menu-item .item-link {
+	color: var(--yhdr-blue-accent);
+}
+
+.ct-header .ct-header-item.type-button .item-link,
+.ct-header .item-link.button-link {
+	background: var(--yhdr-gold);
+	color: var(--yhdr-near-black);
+	border-radius: var(--yhdr-radius-pill);
+	padding: 10px 24px;
+}
+
+.ct-header .ct-header-item.type-button .item-link:hover,
+.ct-header .item-link.button-link:hover {
+	background: var(--yhdr-gold-hover);
+}
+
+.ct-footer {
+	background: var(--yhdr-navy-dark);
+	color: var(--yhdr-light-blue-text);
+}
+
+.ct-footer a { color: var(--yhdr-light-blue-text); text-decoration: none; }
+.ct-footer a:hover { color: var(--yhdr-gold); }
+.ct-footer h1, .ct-footer h2, .ct-footer h3, .ct-footer h4 { color: var(--yhdr-white); }
+
+/* Floating WhatsApp button, injected by nav.js */
+.yhdr-whatsapp-float {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--yhdr-whatsapp);
+	color: var(--yhdr-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+	z-index: 999;
+	text-decoration: none;
+	transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.yhdr-whatsapp-float:hover {
+	background: var(--yhdr-whatsapp-hover);
+	transform: translateY(-2px);
+}
+
+.yhdr-whatsapp-float svg { width: 28px; height: 28px; fill: currentColor; }

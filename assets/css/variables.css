@@ -1,0 +1,47 @@
+/**
+ * Design tokens extracted from the YHDR design mockups
+ * (wp-content/themes/yhdr/_design-reference/*.dc.html).
+ */
+:root {
+	/* Colors */
+	--yhdr-navy-dark: #1e3a66;
+	--yhdr-navy-mid: #2a4f8a;
+	--yhdr-blue-accent: #4272b8;
+	--yhdr-near-black: #16202e;
+	--yhdr-gold: #f2a922;
+	--yhdr-gold-hover: #e09a12;
+	--yhdr-card-blue-bg: #e8effa;
+	--yhdr-offwhite: #f7f8fa;
+	--yhdr-light-blue-text: #d5e1f4;
+	--yhdr-light-blue-text-2: #c3d3ec;
+	--yhdr-body-text: #5a6472;
+	--yhdr-muted-text: #8a94a3;
+	--yhdr-border: #e4eaf3;
+	--yhdr-border-2: #d7dfeb;
+	--yhdr-whatsapp: #25d366;
+	--yhdr-whatsapp-hover: #1fb857;
+	--yhdr-white: #ffffff;
+
+	/* Gradients */
+	--yhdr-gradient-hero: linear-gradient(135deg, var(--yhdr-navy-dark) 0%, var(--yhdr-navy-mid) 55%, var(--yhdr-blue-accent) 100%);
+	--yhdr-gradient-cta: linear-gradient(135deg, var(--yhdr-navy-mid) 0%, var(--yhdr-blue-accent) 100%);
+
+	/* Radii */
+	--yhdr-radius-pill: 999px;
+	--yhdr-radius-lg: 24px;
+	--yhdr-radius-md: 12px;
+
+	/* Typography */
+	--yhdr-font-heading: 'Oswald', sans-serif;
+	--yhdr-font-body: 'Inter', system-ui, sans-serif;
+
+	/* Spacing */
+	--yhdr-space-xs: 8px;
+	--yhdr-space-sm: 16px;
+	--yhdr-space-md: 24px;
+	--yhdr-space-lg: 48px;
+	--yhdr-space-xl: 80px;
+
+	/* Layout */
+	--yhdr-container-width: 1200px;
+}

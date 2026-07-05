@@ -1,0 +1,27 @@
+/**
+ * Canonical .testimonial-card / rating / carousel-button styles, shared by
+ * the Home carousel (home.css positions the carousel container) and the
+ * Testimonials archive grid + single (below).
+ */
+
+.testimonial-card {
+	background: var(--yhdr-white);
+	border-radius: var(--yhdr-radius-lg);
+	padding: var(--yhdr-space-lg);
+}
+
+.testimonials--archive .testimonials__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--yhdr-space-md);
+}
+
+.testimonials--archive .testimonial-card { text-align: left; }
+
+@media (max-width: 960px) {
+	.testimonials--archive .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+	.testimonials--archive .testimonials__grid { grid-template-columns: 1fr; }
+}

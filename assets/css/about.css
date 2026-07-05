@@ -1,0 +1,58 @@
+/**
+ * About page sections: header, story, mission/vision, values, how-we-work,
+ * team.
+ */
+
+.page-header { background: var(--yhdr-gradient-hero); padding-top: var(--yhdr-space-xl); padding-bottom: 0; text-align: center; }
+.page-header .eyebrow { color: var(--yhdr-gold); }
+.page-header h1 { color: var(--yhdr-white); }
+.page-header__intro { max-width: 640px; margin: 0 auto var(--yhdr-space-lg); color: var(--yhdr-light-blue-text); }
+.page-header__intro p { color: inherit; }
+
+/* Our story */
+.our-story__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--yhdr-space-lg); align-items: center; }
+.our-story__text p { margin-bottom: var(--yhdr-space-sm); }
+.our-story__media img { width: 100%; border-radius: var(--yhdr-radius-lg); object-fit: cover; }
+
+/* Mission & vision */
+.mission-vision { background: var(--yhdr-card-blue-bg); }
+.mission-vision__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--yhdr-space-md); }
+.mission-vision__card { border-radius: var(--yhdr-radius-lg); padding: var(--yhdr-space-lg); }
+.mission-vision__card--light { background: var(--yhdr-white); }
+.mission-vision__card--dark { background: var(--yhdr-navy-dark); }
+.mission-vision__card--dark h3, .mission-vision__card--dark p { color: var(--yhdr-white); }
+
+/* Values */
+.our-values__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--yhdr-space-md); text-align: center; }
+.our-values__item { display: flex; flex-direction: column; align-items: center; }
+.our-values__item .badge-circle { margin-bottom: var(--yhdr-space-sm); }
+.our-values__item p { font-size: 0.9rem; color: var(--yhdr-body-text); }
+
+/* How we work */
+.how-we-work { background: var(--yhdr-navy-dark); }
+.how-we-work__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--yhdr-space-md); }
+.how-we-work__step { text-align: center; }
+.how-we-work__number { display: block; font-family: var(--yhdr-font-heading); font-size: 1.75rem; color: var(--yhdr-gold); margin-bottom: var(--yhdr-space-xs); }
+.how-we-work__step h3 { color: var(--yhdr-white); }
+.how-we-work__step p { color: var(--yhdr-light-blue-text-2); }
+
+/* Team */
+.our-team__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--yhdr-space-md); text-align: center; }
+.team-card__avatar { width: 96px; height: 96px; margin: 0 auto var(--yhdr-space-sm); font-size: 1.75rem; }
+.team-card__name { margin-bottom: 2px; }
+.team-card__role { color: var(--yhdr-blue-accent); font-weight: 600; margin-bottom: 2px; }
+.team-card__eyebrow { color: var(--yhdr-muted-text); font-size: 0.85rem; margin: 0; }
+
+@media (max-width: 960px) {
+	.our-story__grid { grid-template-columns: 1fr; }
+	.mission-vision__grid,
+	.our-values__grid,
+	.how-we-work__grid,
+	.our-team__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+	.our-values__grid,
+	.how-we-work__grid,
+	.our-team__grid { grid-template-columns: 1fr; }
+}
