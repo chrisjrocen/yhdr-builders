@@ -120,15 +120,17 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
 
 .badge-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-/* Wave dividers */
+/* Wave dividers -- a smooth navy dome ("D" rotated to face upward), always
+   filled navy so it reads as the navy section's color bulging up into the
+   lighter area around it. The 'down' variant sits at the bottom of a navy
+   section (tallest navy in the center, shortest at the edges); the 'up'
+   variant is its vertical mirror for the top of a navy section, and works
+   out to the same "tall in the middle, short at the edges" navy silhouette
+   once filled navy -- both must stay navy, never white, to read consistently
+   as the same shape. */
 .wave-divider { line-height: 0; }
-.wave-divider svg { display: block; width: 100%; height: 60px; }
-.wave-divider--hero svg,
-.wave-divider--page-header svg,
-.wave-divider--why-top svg,
-.wave-divider--how-top svg { fill: var(--yhdr-white); }
-.wave-divider--why-bottom svg,
-.wave-divider--how-bottom svg { fill: var(--yhdr-offwhite); }
+.wave-divider svg { display: block; width: 100%; height: clamp(32px, 5vw, 64px); }
+.wave-divider svg { fill: #ffffff; }
 
 /* Forms */
 .form-field { margin-bottom: var(--yhdr-space-sm); }

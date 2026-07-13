@@ -21,7 +21,7 @@ $has_categories = ! is_wp_error( $categories ) && ! empty( $categories );
 			<p class="eyebrow"><?php esc_html_e( 'Our Work', 'yhdr' ); ?></p>
 			<h1><?php post_type_archive_title(); ?></h1>
 		</div>
-		<?php yhdr_wave_divider( 'down', 'wave-divider--page-header' ); ?>
+		<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 	</section>
 
 	<section class="projects projects--archive">

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p class="eyebrow"><?php esc_html_e( 'What we do', 'yhdr' ); ?></p>
 			<h1><?php post_type_archive_title(); ?></h1>
 		</div>
-		<?php yhdr_wave_divider( 'down', 'wave-divider--page-header' ); ?>
+		<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 	</section>
 
 	<section class="services services--archive">

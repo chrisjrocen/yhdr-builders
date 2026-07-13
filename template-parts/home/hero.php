@@ -33,5 +33,5 @@ $minor_image = yhdr_image_field( yhdr_get_field( 'hero_minor_image', get_the_ID(
 			<img class="hero__image hero__image--minor" src="<?php echo esc_url( $minor_image['url'] ); ?>" alt="<?php echo esc_attr( $minor_image['alt'] ); ?>" />
 		</div>
 	</div>
-	<?php yhdr_wave_divider( 'down', 'wave-divider--hero' ); ?>
+	<?php yhdr_wave_divider( 'up', 'wave-divider--hero' ); ?>
 </section>
