@@ -1,25 +1,87 @@
 /**
- * Contact page (rendered via the canvas override keyed on is_page('contact')).
+ * Contact page (rendered via template-contact.php).
  */
 
-.contact__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: var(--yhdr-space-lg); align-items: start; }
+#yhdr-contact .page-header h1 { text-transform: uppercase; }
 
-.contact__form { background: var(--yhdr-white); border: 1px solid var(--yhdr-border); border-radius: var(--yhdr-radius-lg); padding: var(--yhdr-space-lg); }
+.contact__grid { display: flex; flex-wrap: wrap; gap: var(--yhdr-space-lg); align-items: flex-start; }
 
-.contact__whatsapp-cta { display: flex; width: 100%; margin-top: var(--yhdr-space-sm); }
+/* Form card */
+.contact-form-card {
+	flex: 1 1 460px;
+	min-width: 300px;
+	background: var(--yhdr-white);
+	border: 1px solid var(--yhdr-border);
+	border-radius: var(--yhdr-radius-lg);
+	padding: clamp(24px, 4vw, 38px);
+	box-shadow: 0 4px 18px rgba(30, 58, 102, 0.07);
+}
+.contact-form-card h2 { text-transform: uppercase; margin-bottom: var(--yhdr-space-sm); }
 
-.contact__banner { border-radius: var(--yhdr-radius-md); padding: var(--yhdr-space-sm) var(--yhdr-space-md); margin-bottom: var(--yhdr-space-md); font-weight: 600; }
-.contact__banner--success { background: #e6f7ec; color: #1c7a3c; }
-.contact__banner--error { background: #fdeaea; color: #b3261e; }
+/* Formidable Forms shortcode output -- targets Formidable's default CSS
+   variable theming (`.with_frm_style`) plus its static class names
+   (`.frm_forms`, `.frm_form_field`, `.frm_primary_label`, `.frm_button_submit`)
+   so the embedded form matches the mockup without any custom form markup. */
+.contact-form-card .with_frm_style {
+	--label-color: var(--yhdr-near-black);
+	--font-size: 13.5px;
+	--weight: 700;
+	--field-font-size: 15px;
+	--field-height: 44px;
+	--field-pad: 13px 16px;
+	--text-color: var(--yhdr-near-black);
+	--border-color: var(--yhdr-border-2);
+	--field-border-width: 1.5px;
+	--bg-color: var(--yhdr-white);
+	--border-color-active: var(--yhdr-blue-accent);
+	--border-radius: var(--yhdr-radius-md);
+	--submit-bg-color: var(--yhdr-gold);
+	--submit-border-color: var(--yhdr-gold);
+	--submit-hover-bg-color: var(--yhdr-gold-hover);
+	--submit-hover-border-color: var(--yhdr-gold-hover);
+	--submit-text-color: var(--yhdr-near-black);
+	--submit-border-radius: var(--yhdr-radius-pill);
+	--submit-font-size: 16px;
+	--submit-weight: 700;
+	--submit-padding: 15px 30px;
+	--submit-height: 48px;
+}
+.contact-form-card .frm_forms { font-family: var(--yhdr-font-body); }
+.contact-form-card .frm_button_submit { cursor: pointer; box-shadow: 0 4px 16px rgba(242, 169, 34, 0.35); }
 
-.contact__info-card { background: var(--yhdr-card-blue-bg); border-radius: var(--yhdr-radius-md); padding: var(--yhdr-space-md); margin-bottom: var(--yhdr-space-sm); }
-.contact__info-card h3 { margin-bottom: 4px; font-size: 1rem; }
-.contact__info-card p { margin: 0; }
-.contact__info-card a { color: var(--yhdr-blue-accent); text-decoration: none; font-weight: 600; }
+/* Info column */
+.contact-info { flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; gap: var(--yhdr-space-md); }
 
-.contact__map { border-radius: var(--yhdr-radius-md); overflow: hidden; height: 260px; }
-.contact__map iframe { width: 100%; height: 100%; border: 0; }
+.contact-info__card { background: var(--yhdr-card-blue-bg); border-radius: var(--yhdr-radius-lg); padding: var(--yhdr-space-lg) var(--yhdr-space-md); }
+.contact-info__card h2 { text-transform: uppercase; margin-bottom: var(--yhdr-space-sm); }
+
+.contact-info__row { display: flex; align-items: center; gap: 14px; margin-bottom: var(--yhdr-space-sm); }
+.contact-info__row strong { display: block; font-size: 0.94rem; }
+.contact-info__row span span { font-size: 0.92rem; color: var(--yhdr-body-text); }
+.contact-info__row a { color: var(--yhdr-near-black); text-decoration: none; }
+.contact-info__row a:hover { color: var(--yhdr-blue-accent); }
+
+.contact-info__icon {
+	flex-shrink: 0;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	background: var(--yhdr-blue-accent);
+	color: var(--yhdr-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.contact-info__whatsapp-cta { display: flex; width: 100%; margin-top: var(--yhdr-space-xs); }
+
+.contact-info__map { border-radius: var(--yhdr-radius-lg); overflow: hidden; border: 1px solid var(--yhdr-border); box-shadow: 0 4px 18px rgba(30, 58, 102, 0.07); }
+.contact-info__map iframe { width: 100%; height: 260px; border: 0; display: block; }
+
+.contact-info__hours { background: var(--yhdr-white); border: 1px solid var(--yhdr-border); border-radius: var(--yhdr-radius-lg); padding: var(--yhdr-space-md) var(--yhdr-space-md); }
+.contact-info__hours h2 { text-transform: uppercase; font-size: 1.15rem; margin-bottom: var(--yhdr-space-sm); }
+.contact-info__hours-row { display: flex; justify-content: space-between; gap: var(--yhdr-space-sm); font-size: 0.92rem; padding: 4px 0; }
 
 @media (max-width: 960px) {
-	.contact__grid { grid-template-columns: 1fr; }
+	.contact__grid { flex-direction: column; }
 }

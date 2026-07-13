@@ -1,7 +1,7 @@
 <?php
 /**
  * Renders custom archive/single markup for the `service`, `project` and
- * `testimonial` CPTs, plus the Contact page, by short-circuiting Blocksy's
+ * `testimonial` CPTs by short-circuiting Blocksy's
  * own template-parts/archive.php and template-parts/single.php via the
  * `blocksy:posts-listing:canvas:custom-output` and
  * `blocksy:single:canvas:custom-output` filters. No dedicated template files
@@ -47,8 +47,6 @@ function yhdr_single_canvas_override( $output ) {
 		$part = 'single-project';
 	} elseif ( is_singular( 'testimonial' ) ) {
 		$part = 'single-testimonial';
-	} elseif ( is_page( 'contact' ) ) {
-		$part = 'page-contact';
 	}
 
 	if ( ! $part ) {

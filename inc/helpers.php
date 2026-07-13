@@ -77,10 +77,11 @@ function yhdr_link_button( $link_field, $classes = 'btn', $fallback_label = '' )
  * Build a wa.me deep link pre-filled with a message.
  *
  * @param string $message Plain-text message.
+ * @param string $phone   E.164 phone number (no leading +), defaults to YHDR_PHONE_E164.
  * @return string
  */
-function yhdr_whatsapp_url( $message = '' ) {
-	$url = 'https://wa.me/' . YHDR_PHONE_E164;
+function yhdr_whatsapp_url( $message = '', $phone = YHDR_PHONE_E164 ) {
+	$url = 'https://wa.me/' . $phone;
 
 	if ( $message !== '' ) {
 		$url .= '?text=' . rawurlencode( $message );

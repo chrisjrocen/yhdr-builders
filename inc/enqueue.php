@@ -46,7 +46,7 @@ function yhdr_enqueue_assets() {
 		'services'     => is_post_type_archive( 'service' ) || is_singular( 'service' ),
 		'projects'     => is_post_type_archive( 'project' ) || is_singular( 'project' ),
 		'testimonials' => is_post_type_archive( 'testimonial' ) || is_singular( 'testimonial' ) || is_page_template( 'template-home.php' ),
-		'contact'      => is_page( 'contact' ),
+		'contact'      => is_page_template( 'template-contact.php' ),
 	];
 
 	foreach ( $conditional_styles as $file => $should_load ) {
@@ -76,13 +76,6 @@ function yhdr_enqueue_assets() {
 		wp_script_add_data( 'yhdr-project-filter', 'strategy', 'defer' );
 	}
 
-	if ( $conditional_styles['contact'] ) {
-		wp_enqueue_script( 'yhdr-contact-form', $js_uri . '/contact-form.js', [], yhdr_asset_version( $js_dir . '/contact-form.js' ), true );
-		wp_script_add_data( 'yhdr-contact-form', 'strategy', 'defer' );
-		wp_localize_script( 'yhdr-contact-form', 'yhdrContact', [
-			'whatsappNumber' => YHDR_PHONE_E164,
-		] );
-	}
 }
 
 /**
