@@ -22,6 +22,7 @@ $content = get_the_content();
 				<div class="page-header__intro"><?php echo yhdr_kses_rich( apply_filters( 'the_content', $content ) ); ?></div>
 			<?php endif; ?>
 		</div>
+		<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 	</section>
 
 	<section class="contact">

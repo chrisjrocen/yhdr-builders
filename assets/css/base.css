@@ -56,6 +56,19 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
 .section-header--dark .eyebrow { color: var(--yhdr-gold); }
 .section-header__description { color: var(--yhdr-muted-text); }
 
+/* Generic archive/single page header -- shared by the services/projects/
+   testimonials archives and their singles. The About page template
+   overrides this with its own flat background (see about.css). */
+.page-header {
+	background: linear-gradient(135deg, var(--yhdr-navy-dark), var(--yhdr-navy-mid));
+	padding: var(--yhdr-space-xl) 0 0;
+	text-align: center;
+}
+.page-header .eyebrow { color: var(--yhdr-gold); }
+.page-header h1 { color: var(--yhdr-white); }
+.page-header__intro { max-width: 640px; margin: 0 auto var(--yhdr-space-lg); color: var(--yhdr-light-blue-text); }
+.page-header__intro p { color: inherit; }
+
 /* Buttons */
 .btn {
 	display: inline-flex;
@@ -119,6 +132,75 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
 }
 
 .badge-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+/* Wave dividers -- a solid navy block with a white elliptical curve carved
+   out of one edge via ::after, so the white section next to it appears to
+   dip a wave into the navy. The 'up' variant carves the curve from the
+   bottom edge (navy sits above, curve dips into it from below); the 'down'
+   variant mirrors this from the top edge. */
+.wave-divider {
+	position: relative;
+	height: 100px;
+	overflow: hidden;
+}
+
+.wave-divider--up::after {
+	content: "";
+	position: absolute;
+	left: -25%;
+	right: -25%;
+	bottom: -60px;
+	height: 120px;
+	background: #fff;
+	border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.wave-divider--down::after {
+	content: "";
+	position: absolute;
+	left: -25%;
+	right: -25%;
+	top: -60px;
+	height: 120px;
+	background: #fff;
+	border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+.wave-divider--navy-dark::after {
+    background: var(--yhdr-navy-dark);
+}
+
+.wave-divider--white::after {
+    background: var(--yhdr-white);
+}
+
+.wave-divider--grey::after {
+    background: #e8effa;
+}
+
+.wave-divider--offwhite::after {
+	background: var(--yhdr-offwhite);
+}
+
+.wave-divider--bg-navy-dark {
+    background: var(--yhdr-navy-dark);
+}
+
+.wave-divider--bg-navy-mid {
+	background: var(--yhdr-navy-mid);
+}
+
+.wave-divider--bg-white {
+    background: var(--yhdr-white);
+}
+
+.wave-divider--bg-grey {
+    background: #e8effa;
+}
+
+.wave-divider--bg-offwhite {
+    background: var(--yhdr-offwhite);
+}
 
 /* Forms */
 .form-field { margin-bottom: var(--yhdr-space-sm); }

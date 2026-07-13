@@ -20,6 +20,7 @@ $archive_link = get_post_type_archive_link( 'service' );
 				<?php endif; ?>
 				<h1><?php the_title(); ?></h1>
 			</div>
+			<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 		</section>
 
 		<div class="container single-service__content">

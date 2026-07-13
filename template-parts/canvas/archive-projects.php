@@ -18,9 +18,13 @@ $has_categories = ! is_wp_error( $categories ) && ! empty( $categories );
 <main id="yhdr-projects-archive">
 	<section class="page-header">
 		<div class="container">
-			<p class="eyebrow"><?php esc_html_e( 'Our Work', 'yhdr' ); ?></p>
-			<h1><?php post_type_archive_title(); ?></h1>
+			<p class="eyebrow"><?php esc_html_e( 'Our Projects', 'yhdr' ); ?></p>
+			<h1><?php esc_html_e( 'Dirt Today, a Masterpiece Tomorrow', 'yhdr' ); ?></h1>
+			<div class="page-header__intro">
+				<p><?php esc_html_e( 'A selection of what we\'ve designed, cast, drilled and delivered across Kampala, Wakiso, Mukono and Entebbe.', 'yhdr' ); ?></p>
+			</div>
 		</div>
+		<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 	</section>
 
 	<section class="projects projects--archive">

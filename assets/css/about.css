@@ -3,7 +3,7 @@
  * team.
  */
 
-.page-header { background: var(--yhdr-gradient-hero); padding-top: var(--yhdr-space-xl); padding-bottom: 0; text-align: center; }
+.page-header { background: #2a4f8a; padding-top: var(--yhdr-space-xl); padding-bottom: 0; text-align: center; }
 .page-header .eyebrow { color: var(--yhdr-gold); }
 .page-header h1 { color: var(--yhdr-white); }
 .page-header__intro { max-width: 640px; margin: 0 auto var(--yhdr-space-lg); color: var(--yhdr-light-blue-text); }
