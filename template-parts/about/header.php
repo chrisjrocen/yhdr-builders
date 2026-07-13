@@ -24,5 +24,4 @@ $title   = get_the_title() ? get_the_title() : __( 'Class Shouldn\'t Cost a Fort
 			<?php endif; ?>
 		</div>
 	</div>
-	<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 </section>

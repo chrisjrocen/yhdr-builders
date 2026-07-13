@@ -14,7 +14,6 @@ if ( ! yhdr_have_rows( 'how_we_work_cards' ) ) {
 }
 ?>
 <section class="how-we-work">
-	<?php yhdr_wave_divider( 'down', 'wave-divider--how-top' ); ?>
 	<div class="container">
 		<header class="section-header section-header--dark">
 			<?php yhdr_eyebrow( $eyebrow ); ?>
@@ -33,5 +32,4 @@ if ( ! yhdr_have_rows( 'how_we_work_cards' ) ) {
 			<?php endwhile; ?>
 		</div>
 	</div>
-	<?php yhdr_wave_divider( 'up', 'wave-divider--how-bottom' ); ?>
 </section>

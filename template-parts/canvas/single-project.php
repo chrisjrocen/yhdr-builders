@@ -28,7 +28,6 @@ $tag          = yhdr_get_field( 'project_tag', get_the_ID(), '' );
 					</p>
 				<?php endif; ?>
 			</div>
-			<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 		</section>
 
 		<div class="container single-project__content">

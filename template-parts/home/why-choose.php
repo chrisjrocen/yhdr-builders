@@ -11,7 +11,6 @@ $eyebrow = yhdr_get_field( 'why_eyebrow', get_the_ID(), __( 'Why Choose YHDR', '
 $heading = yhdr_get_field( 'why_heading', get_the_ID(), __( 'Why Choose YHDR', 'yhdr' ) );
 ?>
 <section class="why-choose">
-	<?php yhdr_wave_divider( 'down', 'wave-divider--why-top' ); ?>
 	<div class="container">
 		<header class="section-header section-header--dark">
 			<?php yhdr_eyebrow( $eyebrow ); ?>
@@ -35,5 +34,4 @@ $heading = yhdr_get_field( 'why_heading', get_the_ID(), __( 'Why Choose YHDR', '
 			</div>
 		<?php endif; ?>
 	</div>
-	<?php yhdr_wave_divider( 'up', 'wave-divider--why-bottom' ); ?>
 </section>

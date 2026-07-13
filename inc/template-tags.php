@@ -22,33 +22,6 @@ function yhdr_eyebrow($text)
 }
 
 /**
- * Decorative SVG section divider shaped like a protractor -- a flat edge
- * running the full width with a single continuous elliptical curve rising
- * or dipping to a rounded point in the middle (no straight vertical sides).
- * Built from two cubic Beziers approximating a true quarter-ellipse each
- * (kappa ~0.5523), rather than an SVG arc command, for consistent
- * rendering everywhere.
- *
- * @param string $direction 'up' (dome: flat bottom edge, curve bulges upward, default)
- *                          or 'down' (bowl: flat top edge, curve bulges downward).
- * @param string $class Extra wrapper class, e.g. to set fill color via CSS.
- */
-function yhdr_wave_divider($direction = 'up', $class = '')
-{
-	$height = 70; // Shorter, flatter curve than a true semicircle would give.
-	$path   = $direction === 'down'
-		? 'M0,0 C0,39 322,70 720,70 C1118,70 1440,39 1440,0 Z'
-		: 'M0,70 C0,31 322,0 720,0 C1118,0 1440,31 1440,70 Z';
-?>
-	<div class="wave-divider <?php echo esc_attr($class); ?>" aria-hidden="true">
-		<svg viewBox="0 0 1440 <?php echo esc_attr($height); ?>" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="<?php echo esc_attr($path); ?>"></path>
-		</svg>
-	</div>
-<?php
-}
-
-/**
  * A single stat tile (e.g. "48+ / Projects Delivered").
  */
 function yhdr_render_stat($value, $label)
