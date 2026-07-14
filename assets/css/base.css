@@ -60,7 +60,7 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
    testimonials archives and their singles. The About page template
    overrides this with its own flat background (see about.css). */
 .page-header {
-	background: linear-gradient(135deg, var(--yhdr-navy-dark), var(--yhdr-navy-mid));
+	background: var(--yhdr-navy-mid);
 	padding: var(--yhdr-space-xl) 0 0;
 	text-align: center;
 }

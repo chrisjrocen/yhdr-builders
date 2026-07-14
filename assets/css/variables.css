@@ -23,7 +23,7 @@
 	--yhdr-white: #ffffff;
 
 	/* Gradients */
-	--yhdr-gradient-cta: linear-gradient(135deg, var(--yhdr-navy-mid) 0%, var(--yhdr-blue-accent) 100%);
+	--yhdr-gradient-cta: var(--yhdr-navy-mid);
 
 	/* Radii */
 	--yhdr-radius-pill: 999px;
