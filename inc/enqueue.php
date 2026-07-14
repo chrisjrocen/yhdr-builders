@@ -30,8 +30,12 @@ function yhdr_enqueue_assets() {
 
 	wp_enqueue_style( 'yhdr-style', get_stylesheet_uri(), [ 'ct-main-styles' ], YHDR_VERSION );
 
-	$core_files = [ 'variables', 'base', 'layout' ];
-	$prev       = 'yhdr-style';
+	// Vendored animate.css library -- provides the `animate__*` entrance
+	// animation classes used site-wide by scroll-animations.js.
+	wp_enqueue_style( 'yhdr-animate-vendor', $css_uri . '/vendor/animate.min.css', [ 'yhdr-style' ], yhdr_asset_version( $css_dir . '/vendor/animate.min.css' ) );
+
+	$core_files = [ 'variables', 'base', 'layout', 'animations' ];
+	$prev       = 'yhdr-animate-vendor';
 
 	foreach ( $core_files as $file ) {
 		$handle = 'yhdr-' . $file;
@@ -65,6 +69,13 @@ function yhdr_enqueue_assets() {
 	// Site-wide supplemental behaviour (does not reimplement Blocksy's own nav JS).
 	wp_enqueue_script( 'yhdr-nav', $js_uri . '/nav.js', [], yhdr_asset_version( $js_dir . '/nav.js' ), true );
 	wp_script_add_data( 'yhdr-nav', 'strategy', 'defer' );
+
+	// Site-wide scroll-triggered entrance animations + stat count-up.
+	wp_enqueue_script( 'yhdr-scroll-animations', $js_uri . '/scroll-animations.js', [], yhdr_asset_version( $js_dir . '/scroll-animations.js' ), true );
+	wp_script_add_data( 'yhdr-scroll-animations', 'strategy', 'defer' );
+
+	wp_enqueue_script( 'yhdr-counter', $js_uri . '/counter.js', [], yhdr_asset_version( $js_dir . '/counter.js' ), true );
+	wp_script_add_data( 'yhdr-counter', 'strategy', 'defer' );
 
 	if ( $conditional_styles['testimonials'] ) {
 		wp_enqueue_script( 'yhdr-testimonial-carousel', $js_uri . '/testimonial-carousel.js', [], yhdr_asset_version( $js_dir . '/testimonial-carousel.js' ), true );

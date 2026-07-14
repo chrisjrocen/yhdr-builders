@@ -20,7 +20,7 @@ $tag          = yhdr_get_field( 'project_tag', get_the_ID(), '' );
 				<?php if ( $archive_link ) : ?>
 					<p class="eyebrow"><a href="<?php echo esc_url( $archive_link ); ?>">&larr; <?php esc_html_e( 'All Projects', 'yhdr' ); ?></a></p>
 				<?php endif; ?>
-				<h1><?php the_title(); ?></h1>
+				<h1 data-animate="fadeInUp"><?php the_title(); ?></h1>
 				<?php if ( $tag || $location ) : ?>
 					<p class="single-project__meta">
 						<?php if ( $tag ) : ?><span class="badge"><?php echo esc_html( $tag ); ?></span><?php endif; ?>
@@ -33,9 +33,9 @@ $tag          = yhdr_get_field( 'project_tag', get_the_ID(), '' );
 
 		<div class="container single-project__content">
 			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="single-project__media"><?php the_post_thumbnail( 'large' ); ?></div>
+				<div class="single-project__media" data-animate="fadeInLeft"><?php the_post_thumbnail( 'large' ); ?></div>
 			<?php endif; ?>
-			<div class="single-project__body">
+			<div class="single-project__body" data-animate="fadeIn" data-animate-delay="200ms">
 				<?php the_content(); ?>
 			</div>
 		</div>

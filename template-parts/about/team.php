@@ -35,7 +35,7 @@ $team = new WP_Query([
         </header>
 
         <?php if ($team->have_posts()) : ?>
-        <div class="our-team__grid">
+        <div class="our-team__grid" data-animate-group>
             <?php
 				while ($team->have_posts()) :
 					$team->the_post();

@@ -20,14 +20,14 @@ $heading = yhdr_get_field('why_heading', get_the_ID(), __('Why Choose YHDR', 'yh
         </header>
 
         <?php if (yhdr_have_rows('values')) : ?>
-        <div class="why-choose__grid">
+        <div class="why-choose__grid" data-animate-group>
             <?php
 				$i = 0;
 				while (have_rows('values')) :
 					the_row();
 					$i++;
 				?>
-            <div class="why-choose__card">
+            <div class="why-choose__card" data-animate="fadeInUp">
                 <span class="why-choose__number"><?php echo esc_html(sprintf('%02d', $i)); ?></span>
                 <h3><?php echo esc_html(get_sub_field('why_title')); ?></h3>
                 <p><?php echo esc_html(get_sub_field('why_description')); ?></p>

@@ -1,0 +1,145 @@
+/**
+ * Site-wide scroll/load animation support: the hidden-until-revealed state
+ * for [data-animate] elements (paired with scroll-animations.js), custom
+ * keyframes animate.css doesn't provide out of the box, card hover polish,
+ * and the best-effort header/nav layer on top of Blocksy's own markup.
+ */
+
+/* Hide elements until scroll-animations.js reveals them. Kept fast/short
+   per animate.css defaults (~0.6-0.8s) rather than the library's slower
+   presets, so the site stays snappy. */
+[data-animate] {
+	opacity: 0;
+}
+[data-animate].animate__animated {
+	opacity: 1;
+	--animate-duration: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-animate] {
+		opacity: 1;
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+/* Hero CTA pulse-on-hover (animate.css's own `pulse` is a continuous loop;
+   this is a single short pulse scoped to hover instead). */
+@keyframes yhdr-pulse {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.04); }
+	100% { transform: scale(1); }
+}
+.hero .btn-primary:hover {
+	animation: yhdr-pulse 0.5s ease-in-out;
+}
+
+/* How We Work connecting progress line (drawn once on scroll-in). */
+.how-we-work__line {
+	position: absolute;
+	top: 28px;
+	left: 12.5%;
+	right: 12.5%;
+	height: 2px;
+	background: var(--yhdr-gold);
+	transform: scaleX(0);
+	transform-origin: left;
+}
+.how-we-work__line.animate__animated {
+	animation-name: yhdr-draw-line;
+	animation-duration: 0.8s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+}
+@keyframes yhdr-draw-line {
+	from { transform: scaleX(0); }
+	to { transform: scaleX(1); }
+}
+@media (max-width: 960px) {
+	.how-we-work__line { display: none; }
+}
+
+/* Card hover polish: lift + shadow + image zoom. */
+.service-card,
+.project-card {
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.service-card:hover,
+.project-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 16px 34px rgba(30, 58, 102, 0.16);
+}
+.service-card__icon img,
+.project-card__media img,
+.service-row__media img {
+	transition: transform 0.35s ease;
+}
+.service-card:hover .service-card__icon img,
+.project-card:hover .project-card__media img,
+.service-row:hover .service-row__media img {
+	transform: scale(1.05);
+}
+
+/* Team avatar grayscale-to-color on hover. */
+.team-card__avatar img {
+	filter: grayscale(1);
+	transition: filter 0.35s ease;
+}
+.team-card:hover .team-card__avatar img {
+	filter: grayscale(0);
+}
+
+/* Testimonial crossfade -- replaces the old instant display:none swap. */
+.testimonial-carousel__track .testimonial-card {
+	transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.testimonial-carousel__track .testimonial-card:not(.is-active) {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(8px);
+}
+.testimonial-carousel__track .testimonial-card.is-active {
+	position: relative;
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+.testimonial-carousel__track { position: relative; }
+
+/* Header shrink-on-scroll (best-effort layer on top of Blocksy's own
+   header builder markup -- see nav.js for the .is-scrolled toggle). */
+.ct-header {
+	transition: padding 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+.ct-header.is-scrolled {
+	box-shadow: 0 2px 16px rgba(30, 58, 102, 0.12);
+}
+.ct-header.is-scrolled .ct-container {
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
+}
+
+/* Nav link load-stagger (fires once on page load; Blocksy's own menu
+   markup/classes, not theme-owned -- verify live and adjust selector if
+   Blocksy's actual output differs). */
+.ct-header nav.menu-container > .menu > .menu-item {
+	animation: fadeInDown 0.5s ease-out both;
+}
+.ct-header nav.menu-container > .menu > .menu-item:nth-child(1) { animation-delay: 0ms; }
+.ct-header nav.menu-container > .menu > .menu-item:nth-child(2) { animation-delay: 70ms; }
+.ct-header nav.menu-container > .menu > .menu-item:nth-child(3) { animation-delay: 140ms; }
+.ct-header nav.menu-container > .menu > .menu-item:nth-child(4) { animation-delay: 210ms; }
+.ct-header nav.menu-container > .menu > .menu-item:nth-child(5) { animation-delay: 280ms; }
+.ct-header nav.menu-container > .menu > .menu-item:nth-child(6) { animation-delay: 350ms; }
+
+/* Mobile off-canvas panel easing tweak -- Blocksy already animates this
+   panel's open/close via its own JS; this only nudges the timing function.
+   Lowest-confidence item in this pass, verify live. */
+#offcanvas.ct-panel,
+#offcanvas .ct-panel-inner {
+	transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}

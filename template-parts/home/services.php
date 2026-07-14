@@ -35,7 +35,7 @@ $services = new WP_Query([
         </header>
 
         <?php if ($services->have_posts()) : ?>
-        <div class="services__grid">
+        <div class="services__grid" data-animate-group>
             <?php
 				while ($services->have_posts()) :
 					$services->the_post();

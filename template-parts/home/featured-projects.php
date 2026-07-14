@@ -21,7 +21,7 @@ $archive_link = get_post_type_archive_link('project');
         </header>
 
         <?php if (yhdr_have_rows('fprojects_projects')) : ?>
-        <div class="featured-projects__grid">
+        <div class="featured-projects__grid" data-animate-group>
             <?php
 				while (have_rows('fprojects_projects')) :
 					the_row();

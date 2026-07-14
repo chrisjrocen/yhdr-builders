@@ -1,13 +1,25 @@
 /**
  * Supplemental site-wide behaviour that Blocksy's own header/footer builder
- * JS does not already provide: a floating WhatsApp button. Does NOT
- * reimplement the mobile hamburger nav -- Blocksy's ct-scripts/ct-events
- * already handle that for .ct-header.
+ * JS does not already provide: a floating WhatsApp button, and a passive
+ * `.is-scrolled` class toggle on the header for a shrink/shadow effect on
+ * scroll. Does NOT reimplement the mobile hamburger nav -- Blocksy's
+ * ct-scripts/ct-events already handle that for .ct-header.
  */
 ( function () {
 	'use strict';
 
 	document.addEventListener( 'DOMContentLoaded', function () {
+		var header = document.querySelector( '.ct-header' );
+
+		if ( header ) {
+			var toggleScrolled = function () {
+				header.classList.toggle( 'is-scrolled', window.scrollY > 40 );
+			};
+
+			toggleScrolled();
+			window.addEventListener( 'scroll', toggleScrolled, { passive: true } );
+		}
+
 		if ( document.querySelector( '.yhdr-whatsapp-float' ) ) {
 			return;
 		}

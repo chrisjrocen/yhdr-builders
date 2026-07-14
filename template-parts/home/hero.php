@@ -18,7 +18,7 @@ $minor_image = yhdr_image_field(yhdr_get_field('hero_minor_image', get_the_ID(),
 ?>
 <section class="hero">
     <div class="container hero__inner">
-        <div class="hero__content">
+        <div class="hero__content" data-animate="fadeInUp">
             <?php yhdr_eyebrow($eyebrow); ?>
             <h1 class="hero__heading"><?php echo esc_html($heading); ?></h1>
             <p class="hero__description"><?php echo esc_html($description); ?></p>
@@ -30,9 +30,9 @@ $minor_image = yhdr_image_field(yhdr_get_field('hero_minor_image', get_the_ID(),
             </div>
         </div>
         <div class="hero__media">
-            <img class="hero__image hero__image--main" src="<?php echo esc_url($main_image['url']); ?>"
+            <img class="hero__image hero__image--main" data-animate="fadeIn" src="<?php echo esc_url($main_image['url']); ?>"
                 alt="<?php echo esc_attr($main_image['alt']); ?>" />
-            <img class="hero__image hero__image--minor" src="<?php echo esc_url($minor_image['url']); ?>"
+            <img class="hero__image hero__image--minor" data-animate="fadeInUp" data-animate-delay="300ms" src="<?php echo esc_url($minor_image['url']); ?>"
                 alt="<?php echo esc_attr($minor_image['alt']); ?>" />
         </div>
     </div>

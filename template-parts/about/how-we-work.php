@@ -20,13 +20,14 @@ if (! yhdr_have_rows('how_we_work_cards')) {
         <header class="section-header section-header--dark">
             <?php yhdr_eyebrow($eyebrow); ?>
         </header>
-        <div class="how-we-work__grid">
+        <div class="how-we-work__grid" data-animate-group>
+            <div class="how-we-work__line" data-animate="drawLine"></div>
             <?php
 			while (have_rows('how_we_work_cards')) :
 				the_row();
 				$step = get_sub_field('how_we_work_values');
 			?>
-            <div class="how-we-work__step">
+            <div class="how-we-work__step" data-animate="fadeInUp">
                 <span
                     class="how-we-work__number"><?php echo esc_html($step ? sprintf('%02d', (int) $step) : ''); ?></span>
                 <h3><?php echo esc_html(get_sub_field('how_we_work_title')); ?></h3>

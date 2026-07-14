@@ -30,8 +30,8 @@
 
 /* How we work */
 .how-we-work { background: var(--yhdr-navy-dark); }
-.how-we-work__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--yhdr-space-md); }
-.how-we-work__step { text-align: center; }
+.how-we-work__grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--yhdr-space-md); }
+.how-we-work__step { position: relative; z-index: 1; text-align: center; }
 .how-we-work__number { display: block; font-family: var(--yhdr-font-heading); font-size: 1.75rem; color: var(--yhdr-gold); margin-bottom: var(--yhdr-space-xs); }
 .how-we-work__step h3 { color: var(--yhdr-white); }
 .how-we-work__step p { color: var(--yhdr-light-blue-text-2); }

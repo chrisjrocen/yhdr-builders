@@ -17,13 +17,13 @@ if ( ! $mission && ! $vision ) {
 <section class="mission-vision">
 	<div class="container mission-vision__grid">
 		<?php if ( $mission ) : ?>
-			<div class="mission-vision__card mission-vision__card--light">
+			<div class="mission-vision__card mission-vision__card--light" data-animate="fadeInLeft">
 				<h3><?php esc_html_e( 'Our Mission', 'yhdr' ); ?></h3>
 				<p><?php echo nl2br( esc_html( $mission ) ); ?></p>
 			</div>
 		<?php endif; ?>
 		<?php if ( $vision ) : ?>
-			<div class="mission-vision__card mission-vision__card--dark">
+			<div class="mission-vision__card mission-vision__card--dark" data-animate="fadeInRight">
 				<h3><?php esc_html_e( 'Our Vision', 'yhdr' ); ?></h3>
 				<p><?php echo nl2br( esc_html( $vision ) ); ?></p>
 			</div>

@@ -41,7 +41,7 @@ function yhdr_wave_divider($direction = 'up', $class = '', $color = 'wave-divide
 	$modifier = $direction === 'down' ? 'wave-divider--down' : 'wave-divider--up';
 ?>
 <div class="wave-divider <?php echo esc_attr($modifier); ?> <?php echo esc_attr($color); ?> <?php echo esc_attr($bg); ?> <?php echo esc_attr($class); ?>"
-    aria-hidden="true"></div>
+    data-animate="fadeIn" aria-hidden="true"></div>
 <?php
 }
 
@@ -53,9 +53,11 @@ function yhdr_render_stat($value, $label)
 	if (empty($value)) {
 		return;
 	}
+
+	$count = preg_match('/\d+/', $value, $matches) ? $matches[0] : '';
 ?>
-<div class="stat-card">
-    <div class="stat-value"><?php echo esc_html($value); ?></div>
+<div class="stat-card" data-animate="fadeInUp">
+    <div class="stat-value" <?php echo $count ? 'data-count="' . esc_attr($count) . '"' : ''; ?>><?php echo esc_html($value); ?></div>
     <div class="stat-label"><?php echo esc_html($label); ?></div>
 </div>
 <?php
@@ -72,7 +74,7 @@ function yhdr_render_service_card($post)
 
 	$excerpt = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 20);
 ?>
-<article class="service-card card">
+<article class="service-card card" data-animate="fadeInUp">
     <?php if (has_post_thumbnail($post)) : ?>
     <div class="service-card__icon"><?php echo get_the_post_thumbnail($post, 'thumbnail'); ?></div>
     <?php endif; ?>
@@ -101,7 +103,7 @@ function yhdr_render_service_row($post, $index = 0)
 	$excerpt = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 40);
 	$reverse = $index % 2 === 1;
 ?>
-<article class="service-row<?php echo $reverse ? ' service-row--reverse' : ''; ?>">
+<article class="service-row<?php echo $reverse ? ' service-row--reverse' : ''; ?>" data-animate="fadeInUp">
     <div class="service-row__media">
         <?php if (has_post_thumbnail($post)) : ?>
         <?php echo get_the_post_thumbnail($post, 'medium_large'); ?>
@@ -141,7 +143,7 @@ function yhdr_render_project_card($post, $variant = 'grid')
 	$terms    = get_the_terms($post->ID, 'project_category');
 	$category_slug = (! empty($terms) && ! is_wp_error($terms)) ? $terms[0]->slug : '';
 ?>
-<article class="project-card project-card--<?php echo esc_attr($variant); ?> card"
+<article class="project-card project-card--<?php echo esc_attr($variant); ?> card" data-animate="fadeInUp"
     <?php echo $category_slug ? 'data-category="' . esc_attr($category_slug) . '"' : ''; ?>>
     <div class="project-card__media">
         <?php if (has_post_thumbnail($post)) : ?>
@@ -184,7 +186,7 @@ function yhdr_render_team_card($post)
 	$role    = yhdr_get_field('title', $post->ID, __('Managing director', 'yhdr'));
 	$eyebrow = yhdr_get_field('eyebrow', $post->ID, __('Leadership & Client Relations', 'yhdr'));
 ?>
-<article class="team-card">
+<article class="team-card" data-animate="fadeInUp">
     <div class="team-card__avatar badge-circle">
         <?php if (has_post_thumbnail($post)) : ?>
         <?php echo get_the_post_thumbnail($post, 'medium'); ?>
@@ -217,7 +219,7 @@ function yhdr_render_testimonial_slide($fields)
 		return;
 	}
 ?>
-<div class="testimonial-card">
+<div class="testimonial-card" data-animate="fadeInUp">
     <div class="testimonial-card__rating" aria-hidden="true">
         <?php echo esc_html(str_repeat('★', $rating) . str_repeat('☆', 5 - $rating)); ?></div>
     <blockquote class="testimonial-card__quote">&ldquo;<?php echo esc_html($quote); ?>&rdquo;</blockquote>

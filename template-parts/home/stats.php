@@ -15,7 +15,7 @@ $fallback_stats = [
 ];
 ?>
 <section class="stats">
-	<div class="container stats__grid">
+	<div class="container stats__grid" data-animate-group>
 		<?php
 		if ( yhdr_have_rows( 'stats' ) ) :
 			while ( have_rows( 'stats' ) ) :

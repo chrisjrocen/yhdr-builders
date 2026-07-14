@@ -23,14 +23,14 @@ if ( ! yhdr_have_rows( 'what_we_stand_for_values' ) ) {
 		<header class="section-header">
 			<h2><?php echo esc_html( $heading ); ?></h2>
 		</header>
-		<div class="our-values__grid">
+		<div class="our-values__grid" data-animate-group>
 			<?php
 			while ( have_rows( 'what_we_stand_for_values' ) ) :
 				the_row();
 				$value_heading = get_sub_field( 'what_we_stand_for_heading' );
 				$value_desc    = get_sub_field( 'what_we_stand_for_description' );
 				?>
-				<div class="our-values__item">
+				<div class="our-values__item" data-animate="zoomIn">
 					<span class="badge-circle"><?php echo esc_html( mb_substr( $value_heading, 0, 1 ) ); ?></span>
 					<h3><?php echo esc_html( $value_heading ); ?></h3>
 					<p><?php echo esc_html( $value_desc ); ?></p>

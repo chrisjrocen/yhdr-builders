@@ -44,7 +44,7 @@ $has_categories = ! is_wp_error($categories) && ! empty($categories);
             <?php endif; ?>
 
             <?php if (have_posts()) : ?>
-            <div class="projects__grid">
+            <div class="projects__grid" data-animate-group>
                 <?php
 					while (have_posts()) :
 						the_post();

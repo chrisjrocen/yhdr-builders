@@ -47,12 +47,12 @@ if (! defined('ABSPATH')) {
             <h2><?php esc_html_e('Not Sure Where to Start?', 'yhdr'); ?></h2>
             <p><?php esc_html_e('Tell us about your land and your budget. We\'ll advise honestly -- even if the honest answer is "not yet".', 'yhdr'); ?>
             </p>
-            <div class="services-cta__actions">
-                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn-primary">
+            <div class="services-cta__actions" data-animate-group>
+                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn-primary" data-animate="fadeIn">
                     <?php esc_html_e('Get a Free Consultation', 'yhdr'); ?>
                 </a>
                 <a href="<?php echo yhdr_whatsapp_url(__('Hi YHDR Builders, I have a question about a service.', 'yhdr')); ?>"
-                    class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-animate="fadeIn">
                     <?php esc_html_e('Chat on WhatsApp', 'yhdr'); ?>
                 </a>
             </div>

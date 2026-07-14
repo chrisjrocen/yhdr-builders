@@ -14,10 +14,10 @@ $secondary   = yhdr_get_field( 'bottom_cta_secondary_cta', get_the_ID(), [] );
 ?>
 <section class="cta-band">
 	<div class="container">
-		<div class="cta-band__card">
+		<div class="cta-band__card" data-animate="fadeInUp">
 			<h2><?php echo esc_html( $heading ); ?></h2>
 			<p><?php echo esc_html( $description ); ?></p>
-			<div class="cta-band__actions">
+			<div class="cta-band__actions" data-animate="fadeIn" data-animate-delay="150ms">
 				<?php
 				echo yhdr_link_button( $primary_cta, 'btn btn-primary', __( 'Get a Free Quote', 'yhdr' ) );
 				echo yhdr_link_button( $secondary, 'btn btn-secondary', __( 'Chat on WhatsApp', 'yhdr' ) );

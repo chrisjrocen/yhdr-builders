@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<section class="testimonials testimonials--archive">
 		<div class="container">
 			<?php if ( have_posts() ) : ?>
-				<div class="testimonials__grid">
+				<div class="testimonials__grid" data-animate-group>
 					<?php
 					while ( have_posts() ) :
 						the_post();

@@ -22,7 +22,7 @@ if ( ! $map_embed ) {
 ?>
 <section class="contact">
 	<div class="container contact__grid">
-		<div class="contact-form-card">
+		<div class="contact-form-card" data-animate="fadeInUp">
 			<h2><?php esc_html_e( 'Request a Free Quote', 'yhdr' ); ?></h2>
 			<?php echo do_shortcode( '[formidable id="' . esc_attr( $form_id ) . '"]' ); ?>
 		</div>
@@ -76,23 +76,25 @@ if ( ! $map_embed ) {
 				</a>
 			</div>
 
-			<div class="contact-info__map">
+			<div class="contact-info__map" data-animate="zoomIn">
 				<?php echo $map_embed; ?>
 			</div>
 
 			<div class="contact-info__hours">
 				<h2><?php esc_html_e( 'Business Hours', 'yhdr' ); ?></h2>
-				<div class="contact-info__hours-row">
-					<span><?php esc_html_e( 'Monday - Friday', 'yhdr' ); ?></span>
-					<span><?php echo esc_html( yhdr_get_field( 'monday_to_friday', $post_id, '8:00 AM - 6:00 PM' ) ); ?></span>
-				</div>
-				<div class="contact-info__hours-row">
-					<span><?php esc_html_e( 'Saturday', 'yhdr' ); ?></span>
-					<span><?php echo esc_html( yhdr_get_field( 'saturday', $post_id, '8:00 AM - 4:00 PM' ) ); ?></span>
-				</div>
-				<div class="contact-info__hours-row">
-					<span><?php esc_html_e( 'Sunday & Public Holidays', 'yhdr' ); ?></span>
-					<span><?php echo esc_html( yhdr_get_field( 'sunday_public_holidays', $post_id, 'Closed' ) ); ?></span>
+				<div class="contact-info__hours-rows" data-animate-group>
+					<div class="contact-info__hours-row" data-animate="fadeInLeft">
+						<span><?php esc_html_e( 'Monday - Friday', 'yhdr' ); ?></span>
+						<span><?php echo esc_html( yhdr_get_field( 'monday_to_friday', $post_id, '8:00 AM - 6:00 PM' ) ); ?></span>
+					</div>
+					<div class="contact-info__hours-row" data-animate="fadeInLeft">
+						<span><?php esc_html_e( 'Saturday', 'yhdr' ); ?></span>
+						<span><?php echo esc_html( yhdr_get_field( 'saturday', $post_id, '8:00 AM - 4:00 PM' ) ); ?></span>
+					</div>
+					<div class="contact-info__hours-row" data-animate="fadeInLeft">
+						<span><?php esc_html_e( 'Sunday & Public Holidays', 'yhdr' ); ?></span>
+						<span><?php echo esc_html( yhdr_get_field( 'sunday_public_holidays', $post_id, 'Closed' ) ); ?></span>
+					</div>
 				</div>
 			</div>
 		</div>

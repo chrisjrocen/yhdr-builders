@@ -39,13 +39,22 @@
 		show( 0 );
 
 		if ( slides.length > 1 ) {
-			var timer = setInterval( function () {
-				show( activeIndex + 1 );
-			}, 7000 );
+			var timer = null;
 
-			carousel.addEventListener( 'mouseenter', function () {
+			function play() {
+				timer = setInterval( function () {
+					show( activeIndex + 1 );
+				}, 7000 );
+			}
+
+			function pause() {
 				clearInterval( timer );
-			} );
+			}
+
+			play();
+
+			carousel.addEventListener( 'mouseenter', pause );
+			carousel.addEventListener( 'mouseleave', play );
 		}
 	}
 

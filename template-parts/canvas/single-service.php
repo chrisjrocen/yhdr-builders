@@ -18,16 +18,16 @@ $archive_link = get_post_type_archive_link( 'service' );
 				<?php if ( $archive_link ) : ?>
 					<p class="eyebrow"><a href="<?php echo esc_url( $archive_link ); ?>">&larr; <?php esc_html_e( 'All Services', 'yhdr' ); ?></a></p>
 				<?php endif; ?>
-				<h1><?php the_title(); ?></h1>
+				<h1 data-animate="fadeInUp"><?php the_title(); ?></h1>
 			</div>
 			<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
 		</section>
 
 		<div class="container single-service__content">
 			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="single-service__media"><?php the_post_thumbnail( 'large' ); ?></div>
+				<div class="single-service__media" data-animate="fadeInLeft"><?php the_post_thumbnail( 'large' ); ?></div>
 			<?php endif; ?>
-			<div class="single-service__body">
+			<div class="single-service__body" data-animate="fadeIn" data-animate-delay="200ms">
 				<?php the_content(); ?>
 			</div>
 		</div>
