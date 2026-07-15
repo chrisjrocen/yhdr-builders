@@ -101,6 +101,23 @@ function yhdr_kses_rich( $html ) {
 }
 
 /**
+ * Estimate a post's reading time in whole minutes (~200 words/minute),
+ * matching the `readMins` field used on the Blog archive/single mockups.
+ *
+ * @param WP_Post $post
+ * @return int Minimum 1.
+ */
+function yhdr_reading_time( $post ) {
+	if ( ! ( $post instanceof WP_Post ) ) {
+		return 1;
+	}
+
+	$word_count = str_word_count( wp_strip_all_tags( $post->post_content ) );
+
+	return max( 1, (int) ceil( $word_count / 200 ) );
+}
+
+/**
  * Normalize an ACF/SCF image field (return format "array") into a
  * ['url' => ..., 'alt' => ...] pair, falling back to a placeholder image
  * and the given alt text when the field is empty or not an image array.

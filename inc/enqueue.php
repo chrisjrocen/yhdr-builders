@@ -52,6 +52,7 @@ function yhdr_enqueue_assets() {
 		'testimonials' => is_post_type_archive( 'testimonial' ) || is_singular( 'testimonial' ) || is_page_template( 'template-home.php' ),
 		'contact'      => is_page_template( 'template-contact.php' ),
 		'shop'         => is_shop() || is_product_category() || is_product(),
+		'blog'         => is_home() || is_singular( 'post' ),
 	];
 
 	foreach ( $conditional_styles as $file => $should_load ) {
@@ -91,6 +92,11 @@ function yhdr_enqueue_assets() {
 	if ( $conditional_styles['shop'] ) {
 		wp_enqueue_script( 'yhdr-shop-sort', $js_uri . '/shop-sort.js', [], yhdr_asset_version( $js_dir . '/shop-sort.js' ), true );
 		wp_script_add_data( 'yhdr-shop-sort', 'strategy', 'defer' );
+	}
+
+	if ( $conditional_styles['blog'] ) {
+		wp_enqueue_script( 'yhdr-blog-filter', $js_uri . '/blog-filter.js', [], yhdr_asset_version( $js_dir . '/blog-filter.js' ), true );
+		wp_script_add_data( 'yhdr-blog-filter', 'strategy', 'defer' );
 	}
 
 	if ( is_product() ) {

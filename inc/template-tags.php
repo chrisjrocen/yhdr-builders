@@ -357,6 +357,131 @@ function yhdr_render_plan_card($product)
 }
 
 /**
+ * The large "Latest" article card at the top of the Blog archive.
+ */
+function yhdr_render_blog_featured_card($post)
+{
+	if (! ($post instanceof WP_Post)) {
+		return;
+	}
+
+	$terms    = get_the_category($post->ID);
+	$category = ! empty($terms) ? $terms[0]->name : '';
+?>
+<a href="<?php echo esc_url(get_permalink($post)); ?>" class="blog-featured" data-animate="fadeIn">
+    <div class="blog-featured__media">
+        <?php if (has_post_thumbnail($post)) : ?>
+        <?php echo get_the_post_thumbnail($post, 'large'); ?>
+        <?php else : ?>
+        <img src="<?php echo esc_url(YHDR_THEME_URI . '/assets/images/placeholder-project.svg'); ?>" alt=""
+            class="blog-featured__placeholder" />
+        <?php endif; ?>
+    </div>
+    <div class="blog-featured__body">
+        <div class="blog-featured__badges">
+            <span class="badge blog-featured__badge-latest"><?php esc_html_e('Latest', 'yhdr'); ?></span>
+            <?php if ($category) : ?>
+            <span class="badge blog-featured__badge-category"><?php echo esc_html($category); ?></span>
+            <?php endif; ?>
+        </div>
+        <h2 class="blog-featured__title"><?php echo esc_html(get_the_title($post)); ?></h2>
+        <p class="blog-featured__excerpt"><?php echo esc_html(get_the_excerpt($post)); ?></p>
+        <div class="blog-featured__meta">
+            <span class="blog-featured__date">
+                <?php echo esc_html(get_the_date('', $post)); ?> &middot;
+                <?php
+					/* translators: %d: reading time in minutes. */
+					echo esc_html(sprintf(_n('%d min read', '%d min read', yhdr_reading_time($post), 'yhdr'), yhdr_reading_time($post)));
+					?>
+            </span>
+            <span class="blog-featured__arrow" aria-hidden="true">&rarr;</span>
+        </div>
+    </div>
+</a>
+<?php
+}
+
+/**
+ * A single `post` card in the Blog archive grid.
+ */
+function yhdr_render_blog_card($post)
+{
+	if (! ($post instanceof WP_Post)) {
+		return;
+	}
+
+	$terms          = get_the_category($post->ID);
+	$category       = ! empty($terms) ? $terms[0]->name : '';
+	$category_slug  = ! empty($terms) ? $terms[0]->slug : '';
+?>
+<a href="<?php echo esc_url(get_permalink($post)); ?>" class="blog-post-card" data-animate="fadeInUp"
+    <?php echo $category_slug ? 'data-category="' . esc_attr($category_slug) . '"' : ''; ?>>
+    <div class="blog-post-card__media">
+        <?php if (has_post_thumbnail($post)) : ?>
+        <?php echo get_the_post_thumbnail($post, 'medium_large'); ?>
+        <?php else : ?>
+        <img src="<?php echo esc_url(YHDR_THEME_URI . '/assets/images/placeholder-project.svg'); ?>" alt=""
+            class="blog-post-card__placeholder" />
+        <?php endif; ?>
+    </div>
+    <div class="blog-post-card__body">
+        <div class="blog-post-card__meta">
+            <?php if ($category) : ?>
+            <span class="badge blog-post-card__category"><?php echo esc_html($category); ?></span>
+            <?php endif; ?>
+            <span class="blog-post-card__read-time">
+                <?php echo esc_html(sprintf(_n('%d min', '%d min', yhdr_reading_time($post), 'yhdr'), yhdr_reading_time($post))); ?>
+            </span>
+        </div>
+        <h3 class="blog-post-card__title"><?php echo esc_html(get_the_title($post)); ?></h3>
+        <p class="blog-post-card__excerpt"><?php echo esc_html(get_the_excerpt($post)); ?></p>
+        <div class="blog-post-card__footer">
+            <span class="blog-post-card__date"><?php echo esc_html(get_the_date('', $post)); ?></span>
+            <span class="blog-post-card__arrow" aria-hidden="true">&rarr;</span>
+        </div>
+    </div>
+</a>
+<?php
+}
+
+/**
+ * A lighter-weight `post` card used in the "Keep Reading" related-articles
+ * strip on the single blog post view -- image, category badge, title, and
+ * date/read-time only (no excerpt or arrow, unlike yhdr_render_blog_card()).
+ */
+function yhdr_render_blog_related_card($post)
+{
+	if (! ($post instanceof WP_Post)) {
+		return;
+	}
+
+	$terms    = get_the_category($post->ID);
+	$category = ! empty($terms) ? $terms[0]->name : '';
+?>
+<a href="<?php echo esc_url(get_permalink($post)); ?>" class="blog-related-card" data-animate="fadeInUp">
+    <div class="blog-related-card__media">
+        <?php if (has_post_thumbnail($post)) : ?>
+        <?php echo get_the_post_thumbnail($post, 'medium_large'); ?>
+        <?php else : ?>
+        <img src="<?php echo esc_url(YHDR_THEME_URI . '/assets/images/placeholder-project.svg'); ?>" alt=""
+            class="blog-related-card__placeholder" />
+        <?php endif; ?>
+    </div>
+    <div class="blog-related-card__body">
+        <?php if ($category) : ?>
+        <span class="badge blog-related-card__category"><?php echo esc_html($category); ?></span>
+        <?php endif; ?>
+        <h3 class="blog-related-card__title"><?php echo esc_html(get_the_title($post)); ?></h3>
+        <span class="blog-related-card__meta">
+            <?php echo esc_html(get_the_date('', $post)); ?> &middot;
+            <?php echo esc_html(sprintf(_n('%d min', '%d min', yhdr_reading_time($post), 'yhdr'), yhdr_reading_time($post))); ?>
+        </span>
+    </div>
+</a>
+<?php
+}
+
+/**
  * Normalize a `testimonial` CPT post into the array shape expected by
  * yhdr_render_testimonial_slide().
  */

@@ -4,16 +4,16 @@
  */
 
 #yhdr-home, #yhdr-about,
-#yhdr-services-archive, #yhdr-projects-archive, #yhdr-testimonials-archive,
-#yhdr-single-service, #yhdr-single-project, #yhdr-single-testimonial,
+#yhdr-services-archive, #yhdr-projects-archive, #yhdr-testimonials-archive, #yhdr-blog-archive,
+#yhdr-single-service, #yhdr-single-project, #yhdr-single-testimonial, #yhdr-single-blog,
 #yhdr-contact {
 	font-family: var(--yhdr-font-body);
 	color: var(--yhdr-body-text);
 }
 
 #yhdr-home *, #yhdr-about *,
-#yhdr-services-archive *, #yhdr-projects-archive *, #yhdr-testimonials-archive *,
-#yhdr-single-service *, #yhdr-single-project *, #yhdr-single-testimonial *,
+#yhdr-services-archive *, #yhdr-projects-archive *, #yhdr-testimonials-archive *, #yhdr-blog-archive *,
+#yhdr-single-service *, #yhdr-single-project *, #yhdr-single-testimonial *, #yhdr-single-blog *,
 #yhdr-contact * {
 	box-sizing: border-box;
 }

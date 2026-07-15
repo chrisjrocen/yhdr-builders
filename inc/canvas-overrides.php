@@ -25,6 +25,8 @@ function yhdr_archive_canvas_override( $output ) {
 		$part = 'archive-projects';
 	} elseif ( is_post_type_archive( 'testimonial' ) ) {
 		$part = 'archive-testimonials';
+	} elseif ( is_home() ) {
+		$part = 'archive-blog';
 	}
 
 	if ( ! $part ) {
@@ -47,6 +49,8 @@ function yhdr_single_canvas_override( $output ) {
 		$part = 'single-project';
 	} elseif ( is_singular( 'testimonial' ) ) {
 		$part = 'single-testimonial';
+	} elseif ( is_singular( 'post' ) ) {
+		$part = 'single-blog';
 	}
 
 	if ( ! $part ) {
