@@ -98,6 +98,15 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
 .btn-whatsapp { background: var(--yhdr-whatsapp); color: var(--yhdr-white); }
 .btn-whatsapp:hover { background: var(--yhdr-whatsapp-hover); }
 
+.btn-whatsapp-outline { background: transparent; color: var(--yhdr-whatsapp-hover); border-color: var(--yhdr-whatsapp); }
+.btn-whatsapp-outline:hover { background: var(--yhdr-whatsapp); color: var(--yhdr-white); }
+
+.btn-accent { background: var(--yhdr-blue-accent); color: var(--yhdr-white); }
+.btn-accent:hover { background: var(--yhdr-navy-mid); }
+
+.btn-outline { background: transparent; color: var(--yhdr-blue-accent); border-color: var(--yhdr-blue-accent); }
+.btn-outline:hover { background: var(--yhdr-blue-accent); color: var(--yhdr-white); }
+
 /* Cards & badges */
 .card {
 	background: var(--yhdr-white);
@@ -113,6 +122,16 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
 	border-radius: var(--yhdr-radius-pill);
 	font-size: 0.75rem;
 	font-weight: 600;
+	padding: 4px 12px;
+}
+
+.badge-gold {
+	display: inline-block;
+	background: var(--yhdr-gold);
+	color: var(--yhdr-near-black);
+	border-radius: var(--yhdr-radius-pill);
+	font-size: 0.75rem;
+	font-weight: 700;
 	padding: 4px 12px;
 }
 

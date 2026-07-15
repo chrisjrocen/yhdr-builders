@@ -51,6 +51,7 @@ function yhdr_enqueue_assets() {
 		'projects'     => is_post_type_archive( 'project' ) || is_singular( 'project' ),
 		'testimonials' => is_post_type_archive( 'testimonial' ) || is_singular( 'testimonial' ) || is_page_template( 'template-home.php' ),
 		'contact'      => is_page_template( 'template-contact.php' ),
+		'shop'         => is_shop() || is_product_category() || is_product(),
 	];
 
 	foreach ( $conditional_styles as $file => $should_load ) {
@@ -85,6 +86,19 @@ function yhdr_enqueue_assets() {
 	if ( $conditional_styles['projects'] ) {
 		wp_enqueue_script( 'yhdr-project-filter', $js_uri . '/project-filter.js', [], yhdr_asset_version( $js_dir . '/project-filter.js' ), true );
 		wp_script_add_data( 'yhdr-project-filter', 'strategy', 'defer' );
+	}
+
+	if ( $conditional_styles['shop'] ) {
+		wp_enqueue_script( 'yhdr-shop-sort', $js_uri . '/shop-sort.js', [], yhdr_asset_version( $js_dir . '/shop-sort.js' ), true );
+		wp_script_add_data( 'yhdr-shop-sort', 'strategy', 'defer' );
+	}
+
+	if ( is_product() ) {
+		wp_enqueue_script( 'yhdr-single-plan', $js_uri . '/single-plan.js', [ 'jquery' ], yhdr_asset_version( $js_dir . '/single-plan.js' ), true );
+		wp_script_add_data( 'yhdr-single-plan', 'strategy', 'defer' );
+		wp_localize_script( 'yhdr-single-plan', 'yhdrShopData', [
+			'whatsappNumber' => YHDR_PHONE_E164,
+		] );
 	}
 
 }

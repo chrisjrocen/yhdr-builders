@@ -236,6 +236,127 @@ function yhdr_render_testimonial_slide($fields)
 }
 
 /**
+ * The plan's type badge -- its first `product_cat` term, if any.
+ *
+ * @param WC_Product $product
+ * @return WP_Term|null
+ */
+function yhdr_plan_type_term($product)
+{
+	$terms = get_the_terms($product->get_id(), 'product_cat');
+
+	if (empty($terms) || is_wp_error($terms)) {
+		return null;
+	}
+
+	return $terms[0];
+}
+
+/**
+ * The three (or four, on the single-plan page) spec pills read straight off
+ * the plan's `pa_beds` / `pa_bathrooms` / `pa_area` global attributes -- the
+ * house's bed/bathroom count and floor area are real WooCommerce product
+ * attributes, not custom fields, so this is the single source of truth for
+ * both the card grid and the single-product page.
+ *
+ * @param WC_Product $product
+ * @return array<int, array{icon: string, label: string}>
+ */
+function yhdr_plan_spec_pills($product)
+{
+	$pills = [];
+	$beds  = $product->get_attribute('pa_beds');
+	$baths = $product->get_attribute('pa_bathrooms');
+	$area  = $product->get_attribute('pa_area');
+
+	if ($beds !== '') {
+		$pills[] = [
+			'icon'  => '🛏',
+			'value' => $beds,
+			'label' => _n('Bedroom', 'Bedrooms', (int) $beds, 'yhdr'),
+			'text'  => sprintf(_n('%s Bed', '%s Beds', (int) $beds, 'yhdr'), $beds),
+		];
+	}
+
+	if ($baths !== '') {
+		$pills[] = [
+			'icon'  => '🛁',
+			'value' => $baths,
+			'label' => _n('Bathroom', 'Bathrooms', (int) $baths, 'yhdr'),
+			'text'  => sprintf(_n('%s Bath', '%s Baths', (int) $baths, 'yhdr'), $baths),
+		];
+	}
+
+	if ($area !== '') {
+		$pills[] = [
+			'icon'  => '📐',
+			'value' => $area . ' m²',
+			'label' => __('Floor Area', 'yhdr'),
+			'text'  => $area . ' m²',
+		];
+	}
+
+	return $pills;
+}
+
+/**
+ * A single plan card in the Shop grid.
+ *
+ * @param WC_Product $product
+ */
+function yhdr_render_plan_card($product)
+{
+	if (! ($product instanceof WC_Product)) {
+		return;
+	}
+
+	$type_term = yhdr_plan_type_term($product);
+	$badge     = get_post_meta($product->get_id(), '_yhdr_badge', true);
+	$sku       = $product->get_sku();
+?>
+<article class="plan-card card" data-animate="fadeInUp">
+    <div class="plan-card__media">
+        <?php if ($badge) : ?>
+        <span class="plan-card__badge badge-gold"><?php echo esc_html($badge); ?></span>
+        <?php endif; ?>
+        <?php if (has_post_thumbnail($product->get_id())) : ?>
+        <?php echo get_the_post_thumbnail($product->get_id(), 'medium_large'); ?>
+        <?php else : ?>
+        <img src="<?php echo esc_url(YHDR_THEME_URI . '/assets/images/placeholder-project.svg'); ?>" alt=""
+            class="plan-card__placeholder" />
+        <?php endif; ?>
+    </div>
+    <div class="plan-card__body">
+        <div class="plan-card__meta">
+            <?php if ($type_term) : ?>
+            <span class="badge plan-card__type"><?php echo esc_html($type_term->name); ?></span>
+            <?php endif; ?>
+            <?php if ($sku) : ?>
+            <span class="plan-card__code"><?php echo esc_html(sprintf(__('Plan %s', 'yhdr'), $sku)); ?></span>
+            <?php endif; ?>
+        </div>
+        <h3 class="plan-card__title"><?php echo esc_html($product->get_name()); ?></h3>
+        <div class="plan-card__specs">
+            <?php foreach (yhdr_plan_spec_pills($product) as $pill) : ?>
+            <span class="plan-card__spec"><?php echo esc_html($pill['icon']); ?> <?php echo esc_html($pill['text']); ?></span>
+            <?php endforeach; ?>
+        </div>
+        <p class="plan-card__excerpt"><?php echo esc_html($product->get_short_description()); ?></p>
+        <div class="plan-card__footer">
+            <div class="plan-card__price">
+                <span class="plan-card__price-amount"><?php echo wp_kses_post($product->get_price_html()); ?></span>
+                <span class="plan-card__price-caption"><?php esc_html_e('full plan set, one-time', 'yhdr'); ?></span>
+            </div>
+            <a href="<?php echo esc_url(get_permalink($product->get_id())); ?>" class="btn btn-primary">
+                <?php esc_html_e('View Plan', 'yhdr'); ?>
+            </a>
+        </div>
+    </div>
+</article>
+<?php
+}
+
+/**
  * Normalize a `testimonial` CPT post into the array shape expected by
  * yhdr_render_testimonial_slide().
  */

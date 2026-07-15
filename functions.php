@@ -23,3 +23,4 @@ require YHDR_THEME_DIR . '/inc/setup.php';
 require YHDR_THEME_DIR . '/inc/enqueue.php';
 require YHDR_THEME_DIR . '/inc/template-tags.php';
 require YHDR_THEME_DIR . '/inc/canvas-overrides.php';
+require YHDR_THEME_DIR . '/inc/woocommerce-setup.php';
