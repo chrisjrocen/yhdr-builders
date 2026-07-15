@@ -324,6 +324,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
+	width: auto;
 	min-height: 44px;
 	padding: 0 28px;
 	border-radius: var(--yhdr-radius-pill);
@@ -341,6 +342,32 @@
 }
 .single-plan__add-to-cart .single_add_to_cart_button:hover { background: var(--yhdr-gold-hover) !important; transform: translateY(-1px); }
 .single-plan__add-to-cart .single_add_to_cart_button.disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Add to cart button, re-skinned to match .btn/.btn-primary conventions
+   everywhere it appears (not just within .single-plan__add-to-cart).
+   !important needed: Blocksy's own `.button.alt` accent-color rule on
+   .woocommerce form.cart .button otherwise wins on specificity. */
+button.single_add_to_cart_button.button.alt {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: auto;
+	min-height: 44px;
+	padding: 0 28px;
+	border-radius: var(--yhdr-radius-pill);
+	font-family: var(--yhdr-font-heading);
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-decoration: none;
+	border: 2px solid transparent;
+	cursor: pointer;
+	background: var(--yhdr-gold) !important;
+	color: var(--yhdr-near-black) !important;
+	transition: background-color 0.2s ease, transform 0.15s ease;
+}
+button.single_add_to_cart_button.button.alt:hover { background: var(--yhdr-gold-hover) !important; transform: translateY(-1px); }
+button.single_add_to_cart_button.button.alt.disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* You May Also Like */
 .shop--related { background: var(--yhdr-offwhite); padding: 50px 0 60px; }

@@ -189,6 +189,10 @@ p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
     background: var(--yhdr-navy-dark);
 }
 
+.wave-divider--navy-mid::after {
+	background: var(--yhdr-navy-mid);
+}
+
 .wave-divider--white::after {
     background: var(--yhdr-white);
 }
