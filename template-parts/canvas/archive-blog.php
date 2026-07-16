@@ -13,7 +13,7 @@
  */
 
 if (! defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 $categories     = get_categories(['hide_empty' => true]);
@@ -22,19 +22,19 @@ $featured_post  = null;
 $grid_posts     = [];
 
 if (have_posts()) {
-	$is_first = true;
+    $is_first = true;
 
-	while (have_posts()) {
-		the_post();
+    while (have_posts()) {
+        the_post();
 
-		if ($is_first && ! is_paged()) {
-			$featured_post = get_post();
-		} else {
-			$grid_posts[] = get_post();
-		}
+        if ($is_first && ! is_paged()) {
+            $featured_post = get_post();
+        } else {
+            $grid_posts[] = get_post();
+        }
 
-		$is_first = false;
-	}
+        $is_first = false;
+    }
 }
 ?>
 <main id="yhdr-blog-archive">
@@ -47,41 +47,40 @@ if (have_posts()) {
                 </p>
             </div>
         </div>
-        <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--white', 'wave-divider--bg-navy-mid'); ?>
+        <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--grey', 'wave-divider--bg-navy-mid'); ?>
     </section>
 
     <?php if ($featured_post) : ?>
-    <section class="blog-featured-wrap container">
-        <?php yhdr_render_blog_featured_card($featured_post); ?>
-    </section>
+        <section class="blog-featured-wrap container">
+            <?php yhdr_render_blog_featured_card($featured_post); ?>
+        </section>
     <?php endif; ?>
 
     <section class="blog-archive">
         <div class="container">
             <?php if ($has_categories) : ?>
-            <div class="blog__filters" role="group"
-                aria-label="<?php esc_attr_e('Filter articles by category', 'yhdr'); ?>">
-                <button type="button" class="blog__filter-btn is-active"
-                    data-filter="all"><?php esc_html_e('All', 'yhdr'); ?></button>
-                <?php foreach ($categories as $category) : ?>
-                <button type="button" class="blog__filter-btn"
-                    data-filter="<?php echo esc_attr($category->slug); ?>"><?php echo esc_html($category->name); ?></button>
-                <?php endforeach; ?>
-            </div>
+                <div class="blog__filters" role="group"
+                    aria-label="<?php esc_attr_e('Filter articles by category', 'yhdr'); ?>">
+                    <button type="button" class="blog__filter-btn is-active"
+                        data-filter="all"><?php esc_html_e('All', 'yhdr'); ?></button>
+                    <?php foreach ($categories as $category) : ?>
+                        <button type="button" class="blog__filter-btn"
+                            data-filter="<?php echo esc_attr($category->slug); ?>"><?php echo esc_html($category->name); ?></button>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
             <?php if (! empty($grid_posts)) : ?>
-            <div class="blog__grid" data-animate-group>
-                <?php foreach ($grid_posts as $post) : ?>
-                <?php yhdr_render_blog_card($post); ?>
-                <?php endforeach; ?>
-            </div>
-            <?php the_posts_pagination(); ?>
+                <div class="blog__grid" data-animate-group>
+                    <?php foreach ($grid_posts as $post) : ?>
+                        <?php yhdr_render_blog_card($post); ?>
+                    <?php endforeach; ?>
+                </div>
+                <?php the_posts_pagination(); ?>
             <?php elseif (! $featured_post) : ?>
-            <p><?php esc_html_e('Our first articles are on the way — check back soon.', 'yhdr'); ?></p>
+                <p><?php esc_html_e('Our first articles are on the way — check back soon.', 'yhdr'); ?></p>
             <?php endif; ?>
         </div>
-        <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--navy-dark', 'wave-divider--bg-white'); ?>
     </section>
 
     <section class="blog-cta">
@@ -99,4 +98,6 @@ if (have_posts()) {
             </div>
         </div>
     </section>
+    <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--navy-dark', 'wave-divider--bg-grey'); ?>
+
 </main>
