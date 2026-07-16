@@ -23,9 +23,9 @@
 .service-row__title { text-transform: uppercase; }
 .service-row__excerpt { color: var(--yhdr-body-text); margin-bottom: var(--yhdr-space-sm); }
 
-.services-cta { background: var(--yhdr-navy-dark); text-align: center; }
-.services-cta .container { max-width: 800px; }
-.services-cta h2 { color: var(--yhdr-white); text-transform: uppercase; }
+.services-cta { text-align: center; }
+.services-cta .container { max-width: 800px; background: var(--yhdr-gradient-cta); border-radius: var(--yhdr-radius-lg); padding: var(--yhdr-space-xl) var(--yhdr-space-lg); }
+.services-cta h2 { color: var(--yhdr-white); }
 .services-cta p { color: var(--yhdr-light-blue-text-2); }
 .services-cta__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--yhdr-space-sm); margin-top: var(--yhdr-space-md); }
 

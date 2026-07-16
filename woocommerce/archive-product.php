@@ -135,7 +135,7 @@ $total = $wp_query->found_posts;
 			<h2><?php esc_html_e("Don't See Your Dream Here?", 'yhdr'); ?></h2>
 			<p><?php esc_html_e('We design fully custom homes too -- tell us what you have in mind and our architects will take it from there.', 'yhdr'); ?>
 			</p>
-			<a href="<?php echo esc_url(get_post_type_archive_link('service')); ?>" class="btn btn-accent">
+			<a href="<?php echo esc_url(get_post_type_archive_link('service')); ?>" class="btn btn-primary">
 				<?php esc_html_e('Explore Custom Design', 'yhdr'); ?>
 			</a>
 		</div>

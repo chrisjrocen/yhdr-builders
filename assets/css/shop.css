@@ -102,8 +102,10 @@
 .shop-how__note { max-width: 640px; margin: var(--yhdr-space-lg) auto 0; color: var(--yhdr-light-blue-text); }
 
 /* Closing CTA */
-.shop-cta { padding: var(--yhdr-space-xl) 0; text-align: center; }
-.shop-cta p { max-width: 560px; margin: 0 auto var(--yhdr-space-md); color: var(--yhdr-body-text); }
+.shop-cta { text-align: center; }
+.shop-cta .container { background: var(--yhdr-gradient-cta); border-radius: var(--yhdr-radius-lg); padding: var(--yhdr-space-xl) var(--yhdr-space-lg); }
+.shop-cta h2 { color: var(--yhdr-white); }
+.shop-cta p { max-width: 560px; margin: 0 auto var(--yhdr-space-md); color: var(--yhdr-light-blue-text-2); }
 
 /* Single plan page */
 .single-plan__breadcrumb { background: var(--yhdr-offwhite); border-bottom: 1px solid var(--yhdr-border); }

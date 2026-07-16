@@ -95,7 +95,7 @@ $related_posts = ! empty($related_ids) ? get_posts([
                     <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn-primary">
                         <?php esc_html_e('Get a Quote', 'yhdr'); ?>
                     </a>
-                    <a href="<?php echo yhdr_whatsapp_url(); ?>" target="_blank" rel="noopener" class="btn btn-outline">
+                    <a href="<?php echo yhdr_whatsapp_url(); ?>" target="_blank" rel="noopener" class="btn btn-secondary">
                         <?php esc_html_e('WhatsApp Us', 'yhdr'); ?>
                     </a>
                 </div>
