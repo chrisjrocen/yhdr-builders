@@ -41,6 +41,21 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 
 p { line-height: 1.7; margin: 0 0 var(--yhdr-space-sm); }
 
+h3.widget-title, 
+.ct-footer h3.wp-block-heading,
+[data-footer*="type-1"] .ct-footer [data-row*="middle"] .widget-title {
+	color: var(--theme-palette-color-5) !important;
+	font-family: var(--yhdr-font-heading) !important;
+	font-weight: 700 !important;
+	--theme-font-size: 22px;
+	font-size: var(--theme-font-size) !important;
+	margin: 0 0 var(--yhdr-space-sm);
+}
+
+.ct-footer .ct-widget:not(:first-child) {
+    margin-top: 0px !important;
+}
+
 .eyebrow {
 	font-family: var(--yhdr-font-heading);
 	text-transform: uppercase;

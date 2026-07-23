@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $heading     = yhdr_get_field( 'bottom_cta_heading', get_the_ID(), __( 'Have Land? Have a Dream? Let\'s Build It.', 'yhdr' ) );
 $description = yhdr_get_field( 'bottom_cta_description', get_the_ID(), __( 'Tell us about your project and get a free, no-obligation quote within 48 hours.', 'yhdr' ) );
-$primary_cta = yhdr_get_field( 'bottom_cta_primary_cta', get_the_ID(), [] );
-$secondary   = yhdr_get_field( 'bottom_cta_secondary_cta', get_the_ID(), [] );
+$primary_cta = yhdr_get_field( 'bottom_cta_primary_cta', get_the_ID(), [ 'url' => home_url( '/contact/' ) ] );
+$secondary   = yhdr_get_field( 'bottom_cta_secondary_cta', get_the_ID(), [ 'url' => yhdr_whatsapp_url(), 'target' => '_blank' ] );
 ?>
 <section class="cta-band">
 	<div class="container">

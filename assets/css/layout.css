@@ -5,6 +5,16 @@
  * responsive nav JS keeps working unmodified.
  */
 
+/* CTA band (shared by template-parts/home/cta-band.php on both the home page and single-project pages) */
+.cta-band__card {
+	background: var(--yhdr-gradient-cta);
+	border-radius: var(--yhdr-radius-lg);
+	padding: var(--yhdr-space-xl) var(--yhdr-space-lg);
+	text-align: center;
+}
+.cta-band__card h2, .cta-band__card p { color: var(--yhdr-white); }
+.cta-band__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--yhdr-space-sm); margin-top: var(--yhdr-space-md); }
+
 .ct-header {
 	background: var(--yhdr-white);
 	border-bottom: 1px solid var(--yhdr-border);

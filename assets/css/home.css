@@ -96,16 +96,6 @@ section.services {background: var(--yhdr-card-blue-bg); }
 .testimonials__cta { text-align: center; margin-top: var(--yhdr-space-lg); }
 .testimonials__cta a { color: var(--yhdr-blue-accent); font-weight: 600; text-decoration: none; }
 
-/* CTA band */
-.cta-band__card {
-	background: var(--yhdr-gradient-cta);
-	border-radius: var(--yhdr-radius-lg);
-	padding: var(--yhdr-space-xl) var(--yhdr-space-lg);
-	text-align: center;
-}
-.cta-band__card h2, .cta-band__card p { color: var(--yhdr-white); }
-.cta-band__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--yhdr-space-sm); margin-top: var(--yhdr-space-md); }
-
 @media (max-width: 960px) {
 	.hero__inner { grid-template-columns: 1fr; }
 	.hero__media { min-height: 260px; margin-top: var(--yhdr-space-lg); }
