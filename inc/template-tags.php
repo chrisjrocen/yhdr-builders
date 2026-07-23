@@ -117,7 +117,7 @@ function yhdr_render_service_row($post, $index = 0)
         <?php if ($tag) : ?>
         <span class="badge service-row__tag"><?php echo esc_html($tag); ?></span>
         <?php endif; ?>
-        <h2 class="service-row__title"><?php echo esc_html(get_the_title($post)); ?></h2>
+        <h2 id="<?php echo esc_attr(sanitize_title(get_the_title($post))); ?>" class="service-row__title"><?php echo esc_html(get_the_title($post)); ?></h2>
         <p class="service-row__excerpt"><?php echo esc_html($excerpt); ?></p>
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn-primary service-row__cta">
             <?php esc_html_e('Request This Service', 'yhdr'); ?>
