@@ -24,14 +24,14 @@
 
 /* Values */
 .our-values__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--yhdr-space-md); text-align: center; }
-.our-values__item { display: flex; flex-direction: column; align-items: center; }
+.our-values__item { display: flex; flex-direction: column; align-items: center; background: var(--yhdr-white); border-radius: var(--yhdr-radius-md); padding: var(--yhdr-space-md); text-align: center; }
 .our-values__item .badge-circle { margin-bottom: var(--yhdr-space-sm); }
 .our-values__item p { font-size: 0.9rem; color: var(--yhdr-body-text); }
 
 /* How we work */
 .how-we-work { background: var(--yhdr-navy-dark); }
 .how-we-work__grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--yhdr-space-md); }
-.how-we-work__step { position: relative; z-index: 1; text-align: center; }
+.how-we-work__step { position: relative; z-index: 1; text-align: center; background: rgba(255, 255, 255, 0.06); border-radius: var(--yhdr-radius-md); padding: var(--yhdr-space-md); }
 .how-we-work__number { display: block; font-family: var(--yhdr-font-heading); font-size: 1.75rem; color: var(--yhdr-gold); margin-bottom: var(--yhdr-space-xs); }
 .how-we-work__step h3 { color: var(--yhdr-white); }
 .how-we-work__step p { color: var(--yhdr-light-blue-text-2); }

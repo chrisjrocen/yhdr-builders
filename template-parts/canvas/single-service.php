@@ -1,37 +1,40 @@
 <?php
+
 /**
  * Custom `service` single, rendered via the
  * blocksy:single:canvas:custom-output filter (see inc/canvas-overrides.php)
  * -- no dedicated single-service.php template.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$archive_link = get_post_type_archive_link( 'service' );
+$archive_link = get_post_type_archive_link('service');
 ?>
 <main id="yhdr-single-service">
-	<article <?php post_class( 'single-service' ); ?>>
-		<section class="page-header">
-			<div class="container">
-				<?php if ( $archive_link ) : ?>
-					<p class="eyebrow"><a href="<?php echo esc_url( $archive_link ); ?>">&larr; <?php esc_html_e( 'All Services', 'yhdr' ); ?></a></p>
-				<?php endif; ?>
-				<h1 data-animate="fadeInUp"><?php the_title(); ?></h1>
-			</div>
-			<?php yhdr_wave_divider( 'up', 'wave-divider--page-header' ); ?>
-		</section>
+    <article <?php post_class('single-service'); ?>>
+        <section class="page-header">
+            <div class="container">
+                <?php if ($archive_link) : ?>
+                <p class="eyebrow"><a href="<?php echo esc_url($archive_link); ?>">&larr;
+                        <?php esc_html_e('All Services', 'yhdr'); ?></a></p>
+                <?php endif; ?>
+                <h1 data-animate="fadeInUp"><?php the_title(); ?></h1>
+            </div>
+            <?php yhdr_wave_divider('up', 'wave-divider--page-header', 'wave-divider--grey', 'wave-divider--bg-navy-mid'); ?>
+        </section>
 
-		<div class="container single-service__content">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="single-service__media" data-animate="fadeInLeft"><?php the_post_thumbnail( 'large' ); ?></div>
-			<?php endif; ?>
-			<div class="single-service__body" data-animate="fadeIn" data-animate-delay="200ms">
-				<?php the_content(); ?>
-			</div>
-		</div>
-	</article>
+        <div class="container single-service__content">
+            <?php if (has_post_thumbnail()) : ?>
+            <div class="single-service__media" data-animate="fadeInLeft"><?php the_post_thumbnail('large'); ?></div>
+            <?php endif; ?>
+            <div class="single-service__body" data-animate="fadeIn" data-animate-delay="200ms">
+                <?php the_content(); ?>
+            </div>
+        </div>
+    </article>
 
-	<?php get_template_part( 'template-parts/home/cta-band' ); ?>
+    <?php get_template_part('template-parts/home/cta-band'); ?>
+    <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--navy-dark', 'wave-divider--bg-grey'); ?>
 </main>

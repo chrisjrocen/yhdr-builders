@@ -7,7 +7,7 @@
  */
 
 if (! defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 /**
@@ -15,10 +15,10 @@ if (! defined('ABSPATH')) {
  */
 function yhdr_eyebrow($text)
 {
-	if (empty($text)) {
-		return;
-	}
-	echo '<p class="eyebrow">' . esc_html($text) . '</p>';
+    if (empty($text)) {
+        return;
+    }
+    echo '<p class="eyebrow">' . esc_html($text) . '</p>';
 }
 
 /**
@@ -38,7 +38,7 @@ function yhdr_eyebrow($text)
  */
 function yhdr_wave_divider($direction = 'up', $class = '', $color = 'wave-divider--navy-dark', $bg = 'wave-divider--bg-navy-dark')
 {
-	$modifier = $direction === 'down' ? 'wave-divider--down' : 'wave-divider--up';
+    $modifier = $direction === 'down' ? 'wave-divider--down' : 'wave-divider--up';
 ?>
 <div class="wave-divider <?php echo esc_attr($modifier); ?> <?php echo esc_attr($color); ?> <?php echo esc_attr($bg); ?> <?php echo esc_attr($class); ?>"
     data-animate="fadeIn" aria-hidden="true"></div>
@@ -50,14 +50,15 @@ function yhdr_wave_divider($direction = 'up', $class = '', $color = 'wave-divide
  */
 function yhdr_render_stat($value, $label)
 {
-	if (empty($value)) {
-		return;
-	}
+    if (empty($value)) {
+        return;
+    }
 
-	$count = preg_match('/\d+/', $value, $matches) ? $matches[0] : '';
+    $count = preg_match('/\d+/', $value, $matches) ? $matches[0] : '';
 ?>
 <div class="stat-card" data-animate="fadeInUp">
-    <div class="stat-value" <?php echo $count ? 'data-count="' . esc_attr($count) . '"' : ''; ?>><?php echo esc_html($value); ?></div>
+    <div class="stat-value" <?php echo $count ? 'data-count="' . esc_attr($count) . '"' : ''; ?>>
+        <?php echo esc_html($value); ?></div>
     <div class="stat-label"><?php echo esc_html($label); ?></div>
 </div>
 <?php
@@ -68,11 +69,11 @@ function yhdr_render_stat($value, $label)
  */
 function yhdr_render_service_card($post)
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$excerpt = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 20);
+    $excerpt = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 20);
 ?>
 <article class="service-card card" data-animate="fadeInUp">
     <?php if (has_post_thumbnail($post)) : ?>
@@ -95,13 +96,13 @@ function yhdr_render_service_card($post)
  */
 function yhdr_render_service_row($post, $index = 0)
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$tag     = yhdr_get_field('service_tag', $post->ID, '');
-	$excerpt = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 40);
-	$reverse = $index % 2 === 1;
+    $tag     = yhdr_get_field('service_tag', $post->ID, '');
+    $excerpt = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 40);
+    $reverse = $index % 2 === 1;
 ?>
 <article class="service-row<?php echo $reverse ? ' service-row--reverse' : ''; ?>" data-animate="fadeInUp">
     <div class="service-row__media">
@@ -134,14 +135,14 @@ function yhdr_render_service_row($post, $index = 0)
  */
 function yhdr_render_project_card($post, $variant = 'grid')
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$location = yhdr_get_field('project_location', $post->ID, '');
-	$tag      = yhdr_get_field('project_tag', $post->ID, '');
-	$terms    = get_the_terms($post->ID, 'project_category');
-	$category_slug = (! empty($terms) && ! is_wp_error($terms)) ? $terms[0]->slug : '';
+    $location = yhdr_get_field('project_location', $post->ID, '');
+    $tag      = yhdr_get_field('project_tag', $post->ID, '');
+    $terms    = get_the_terms($post->ID, 'project_category');
+    $category_slug = (! empty($terms) && ! is_wp_error($terms)) ? $terms[0]->slug : '';
 ?>
 <article class="project-card project-card--<?php echo esc_attr($variant); ?> card" data-animate="fadeInUp"
     <?php echo $category_slug ? 'data-category="' . esc_attr($category_slug) . '"' : ''; ?>>
@@ -179,12 +180,12 @@ function yhdr_render_project_card($post, $variant = 'grid')
  */
 function yhdr_render_team_card($post)
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$role    = yhdr_get_field('title', $post->ID, __('Managing director', 'yhdr'));
-	$eyebrow = yhdr_get_field('eyebrow', $post->ID, __('Leadership & Client Relations', 'yhdr'));
+    $role    = yhdr_get_field('title', $post->ID, __('Managing director', 'yhdr'));
+    $eyebrow = yhdr_get_field('eyebrow', $post->ID);
 ?>
 <article class="team-card" data-animate="fadeInUp">
     <div class="team-card__avatar badge-circle">
@@ -210,14 +211,14 @@ function yhdr_render_team_card($post)
  */
 function yhdr_render_testimonial_slide($fields)
 {
-	$rating  = max(0, min(5, (int) ($fields['rating'] ?? 5)));
-	$quote   = $fields['quote'] ?? '';
-	$client  = $fields['client'] ?? '';
-	$project = $fields['project'] ?? '';
+    $rating  = max(0, min(5, (int) ($fields['rating'] ?? 5)));
+    $quote   = $fields['quote'] ?? '';
+    $client  = $fields['client'] ?? '';
+    $project = $fields['project'] ?? '';
 
-	if (empty($quote)) {
-		return;
-	}
+    if (empty($quote)) {
+        return;
+    }
 ?>
 <div class="testimonial-card" data-animate="fadeInUp">
     <div class="testimonial-card__rating" aria-hidden="true">
@@ -243,13 +244,13 @@ function yhdr_render_testimonial_slide($fields)
  */
 function yhdr_plan_type_term($product)
 {
-	$terms = get_the_terms($product->get_id(), 'product_cat');
+    $terms = get_the_terms($product->get_id(), 'product_cat');
 
-	if (empty($terms) || is_wp_error($terms)) {
-		return null;
-	}
+    if (empty($terms) || is_wp_error($terms)) {
+        return null;
+    }
 
-	return $terms[0];
+    return $terms[0];
 }
 
 /**
@@ -264,39 +265,39 @@ function yhdr_plan_type_term($product)
  */
 function yhdr_plan_spec_pills($product)
 {
-	$pills = [];
-	$beds  = $product->get_attribute('pa_beds');
-	$baths = $product->get_attribute('pa_bathrooms');
-	$area  = $product->get_attribute('pa_area');
+    $pills = [];
+    $beds  = $product->get_attribute('pa_beds');
+    $baths = $product->get_attribute('pa_bathrooms');
+    $area  = $product->get_attribute('pa_area');
 
-	if ($beds !== '') {
-		$pills[] = [
-			'icon'  => '🛏',
-			'value' => $beds,
-			'label' => _n('Bedroom', 'Bedrooms', (int) $beds, 'yhdr'),
-			'text'  => sprintf(_n('%s Bed', '%s Beds', (int) $beds, 'yhdr'), $beds),
-		];
-	}
+    if ($beds !== '') {
+        $pills[] = [
+            'icon'  => '🛏',
+            'value' => $beds,
+            'label' => _n('Bedroom', 'Bedrooms', (int) $beds, 'yhdr'),
+            'text'  => sprintf(_n('%s Bed', '%s Beds', (int) $beds, 'yhdr'), $beds),
+        ];
+    }
 
-	if ($baths !== '') {
-		$pills[] = [
-			'icon'  => '🛁',
-			'value' => $baths,
-			'label' => _n('Bathroom', 'Bathrooms', (int) $baths, 'yhdr'),
-			'text'  => sprintf(_n('%s Bath', '%s Baths', (int) $baths, 'yhdr'), $baths),
-		];
-	}
+    if ($baths !== '') {
+        $pills[] = [
+            'icon'  => '🛁',
+            'value' => $baths,
+            'label' => _n('Bathroom', 'Bathrooms', (int) $baths, 'yhdr'),
+            'text'  => sprintf(_n('%s Bath', '%s Baths', (int) $baths, 'yhdr'), $baths),
+        ];
+    }
 
-	if ($area !== '') {
-		$pills[] = [
-			'icon'  => '📐',
-			'value' => $area . ' m²',
-			'label' => __('Floor Area', 'yhdr'),
-			'text'  => $area . ' m²',
-		];
-	}
+    if ($area !== '') {
+        $pills[] = [
+            'icon'  => '📐',
+            'value' => $area . ' m²',
+            'label' => __('Floor Area', 'yhdr'),
+            'text'  => $area . ' m²',
+        ];
+    }
 
-	return $pills;
+    return $pills;
 }
 
 /**
@@ -306,13 +307,13 @@ function yhdr_plan_spec_pills($product)
  */
 function yhdr_render_plan_card($product)
 {
-	if (! ($product instanceof WC_Product)) {
-		return;
-	}
+    if (! ($product instanceof WC_Product)) {
+        return;
+    }
 
-	$type_term = yhdr_plan_type_term($product);
-	$badge     = get_post_meta($product->get_id(), '_yhdr_badge', true);
-	$sku       = $product->get_sku();
+    $type_term = yhdr_plan_type_term($product);
+    $badge     = get_post_meta($product->get_id(), '_yhdr_badge', true);
+    $sku       = $product->get_sku();
 ?>
 <article class="plan-card card" data-animate="fadeInUp">
     <div class="plan-card__media">
@@ -338,7 +339,8 @@ function yhdr_render_plan_card($product)
         <h3 class="plan-card__title"><?php echo esc_html($product->get_name()); ?></h3>
         <div class="plan-card__specs">
             <?php foreach (yhdr_plan_spec_pills($product) as $pill) : ?>
-            <span class="plan-card__spec"><?php echo esc_html($pill['icon']); ?> <?php echo esc_html($pill['text']); ?></span>
+            <span class="plan-card__spec"><?php echo esc_html($pill['icon']); ?>
+                <?php echo esc_html($pill['text']); ?></span>
             <?php endforeach; ?>
         </div>
         <p class="plan-card__excerpt"><?php echo esc_html($product->get_short_description()); ?></p>
@@ -361,12 +363,12 @@ function yhdr_render_plan_card($product)
  */
 function yhdr_render_blog_featured_card($post)
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$terms    = get_the_category($post->ID);
-	$category = ! empty($terms) ? $terms[0]->name : '';
+    $terms    = get_the_category($post->ID);
+    $category = ! empty($terms) ? $terms[0]->name : '';
 ?>
 <a href="<?php echo esc_url(get_permalink($post)); ?>" class="blog-featured" data-animate="fadeIn">
     <div class="blog-featured__media">
@@ -390,9 +392,9 @@ function yhdr_render_blog_featured_card($post)
             <span class="blog-featured__date">
                 <?php echo esc_html(get_the_date('', $post)); ?> &middot;
                 <?php
-					/* translators: %d: reading time in minutes. */
-					echo esc_html(sprintf(_n('%d min read', '%d min read', yhdr_reading_time($post), 'yhdr'), yhdr_reading_time($post)));
-					?>
+                    /* translators: %d: reading time in minutes. */
+                    echo esc_html(sprintf(_n('%d min read', '%d min read', yhdr_reading_time($post), 'yhdr'), yhdr_reading_time($post)));
+                    ?>
             </span>
             <span class="blog-featured__arrow" aria-hidden="true">&rarr;</span>
         </div>
@@ -406,13 +408,13 @@ function yhdr_render_blog_featured_card($post)
  */
 function yhdr_render_blog_card($post)
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$terms          = get_the_category($post->ID);
-	$category       = ! empty($terms) ? $terms[0]->name : '';
-	$category_slug  = ! empty($terms) ? $terms[0]->slug : '';
+    $terms          = get_the_category($post->ID);
+    $category       = ! empty($terms) ? $terms[0]->name : '';
+    $category_slug  = ! empty($terms) ? $terms[0]->slug : '';
 ?>
 <a href="<?php echo esc_url(get_permalink($post)); ?>" class="blog-post-card" data-animate="fadeInUp"
     <?php echo $category_slug ? 'data-category="' . esc_attr($category_slug) . '"' : ''; ?>>
@@ -451,12 +453,12 @@ function yhdr_render_blog_card($post)
  */
 function yhdr_render_blog_related_card($post)
 {
-	if (! ($post instanceof WP_Post)) {
-		return;
-	}
+    if (! ($post instanceof WP_Post)) {
+        return;
+    }
 
-	$terms    = get_the_category($post->ID);
-	$category = ! empty($terms) ? $terms[0]->name : '';
+    $terms    = get_the_category($post->ID);
+    $category = ! empty($terms) ? $terms[0]->name : '';
 ?>
 <a href="<?php echo esc_url(get_permalink($post)); ?>" class="blog-related-card" data-animate="fadeInUp">
     <div class="blog-related-card__media">
@@ -487,14 +489,14 @@ function yhdr_render_blog_related_card($post)
  */
 function yhdr_testimonial_fields_from_post($post)
 {
-	if (! ($post instanceof WP_Post)) {
-		return [];
-	}
+    if (! ($post instanceof WP_Post)) {
+        return [];
+    }
 
-	return [
-		'rating'  => (int) yhdr_get_field('client_stories_rating', $post->ID, 5),
-		'quote'   => yhdr_get_field('client_stories_quote', $post->ID, get_the_excerpt($post)),
-		'client'  => yhdr_get_field('client_stories_client', $post->ID, get_the_title($post)),
-		'project' => yhdr_get_field('client_stories_project', $post->ID, ''),
-	];
+    return [
+        'rating'  => (int) yhdr_get_field('client_stories_rating', $post->ID, 5),
+        'quote'   => yhdr_get_field('client_stories_quote', $post->ID, get_the_excerpt($post)),
+        'client'  => yhdr_get_field('client_stories_client', $post->ID, get_the_title($post)),
+        'project' => yhdr_get_field('client_stories_project', $post->ID, ''),
+    ];
 }

@@ -7,7 +7,7 @@
  */
 
 if (! defined('ABSPATH')) {
-	exit;
+    exit;
 }
 ?>
 <main id="yhdr-services-archive">
@@ -27,20 +27,19 @@ if (! defined('ABSPATH')) {
         <div class="container services__list">
             <?php if (have_posts()) : ?>
             <?php
-				$i = 0;
-				while (have_posts()) :
-					the_post();
-					yhdr_render_service_row(get_post(), $i);
-					$i++;
-				endwhile;
-				?>
+                $i = 0;
+                while (have_posts()) :
+                    the_post();
+                    yhdr_render_service_row(get_post(), $i);
+                    $i++;
+                endwhile;
+                ?>
             <?php the_posts_pagination(); ?>
             <?php else : ?>
             <p><?php esc_html_e('Our services will be listed here shortly.', 'yhdr'); ?></p>
             <?php endif; ?>
         </div>
     </section>
-    <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--navy-dark', 'wave-divider--bg-grey'); ?>
     <section class="services-cta">
 
         <div class="container">
@@ -58,4 +57,5 @@ if (! defined('ABSPATH')) {
             </div>
         </div>
     </section>
+    <?php yhdr_wave_divider('up', 'wave-divider--why-top', 'wave-divider--navy-dark', 'wave-divider--bg-grey'); ?>
 </main>
